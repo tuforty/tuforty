@@ -13,6 +13,17 @@ use Illuminate\Http\Request;
 |
 */
 
+
+/**
+ * Pricing API
+ */
+Route::get('pricing', 'PricingController@index')->middleware('auth:passport');
+
+/**
+ * Billing API
+ */
+Route::post('billing/purchase', 'BillingController@purchaseQuota')->middleware('auth:passport');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
