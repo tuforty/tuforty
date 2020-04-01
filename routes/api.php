@@ -13,6 +13,11 @@ use Illuminate\Http\Request;
 |
 */
 
+/**
+ * Authentication / TOken Generation.
+ */
+Route::get('token', 'ApiTokenController@get');
+Route::get('token/refresh', 'ApiTokenController@refresh');
 
 /**
  * Pricing API
