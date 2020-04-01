@@ -4,6 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <manage-api-tokens></manage-api-tokens>
+            
             <div class="card">
                 <div class="card-header">Dashboard</div>
 
