@@ -29,6 +29,11 @@ Route::get('pricing', 'PricingController@index')->middleware('auth:passport');
  */
 Route::post('billing/purchase', 'BillingController@purchaseQuota')->middleware('auth:passport');
 
+/**
+ * Translation API 
+ */
+Route::get('translator/money', 'MoneyTranslateController@get');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
