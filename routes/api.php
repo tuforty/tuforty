@@ -30,6 +30,11 @@ Route::get('pricing', 'PricingController@index')->middleware('auth:passport');
 Route::post('billing/purchase', 'BillingController@purchaseQuota')->middleware('auth:passport');
 
 /**
+ * Usage Analytics
+ */
+Route::get('usage/analytics', 'UsageController@index');
+
+/**
  * Translation API 
  */
 Route::get('translator/money', 'MoneyTranslateController@get');

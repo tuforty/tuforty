@@ -31,3 +31,8 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashbord');
  * Dashboard > Billing
  */
 Route::get('/dashboard/billing', 'BillingController@get')->name('billing')->middleware('auth');
+
+/**
+ * Dashboard > Usage
+ */
+Route::get('/dashboard/usage', 'DashboardController@usage')->name('usage');

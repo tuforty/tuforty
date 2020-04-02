@@ -25,4 +25,14 @@ class DashboardController extends Controller
     {
         return view('dashboard.index');
     }
+
+    /**
+     * Show the api usage page.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function usage()
+    {
+        return view('dashboard.usage.index');
+    }
 }

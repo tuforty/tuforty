@@ -28,6 +28,11 @@ Vue.component(
     require('./components/billing/ManageCards.vue').default
 );
 
+Vue.component(
+    'usage-show',
+    require('./components/usage/ShowUsage.vue').default
+);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
