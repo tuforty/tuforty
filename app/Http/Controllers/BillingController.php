@@ -13,17 +13,13 @@ use App\Http\Requests\Billing\MakePaymentRequest;
 class BillingController extends Controller
 {
     /**
-     * Get the billing view.
+     * Create a new controller instance.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
+     * @return void
      */
-    public function get(Request $request)
+    public function __construct()
     {
-        return view('dashboard.billing.index', [
-            'intent' => $request->user()->createSetupIntent(),
-            'paymentMethods' => $request->user()->paymentMethods()
-        ]);
+        $this->middleware('auth:passport');
     }
 
     /**

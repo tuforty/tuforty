@@ -22,12 +22,12 @@ Route::get('token/refresh', 'ApiTokenController@refresh');
 /**
  * Pricing API
  */
-Route::get('pricing', 'PricingController@index')->middleware('auth:passport');
+Route::get('pricing', 'PricingController@index');
 
 /**
  * Billing API
  */
-Route::post('billing/purchase', 'BillingController@purchaseQuota')->middleware('auth:passport');
+Route::post('billing/purchase', 'BillingController@purchaseQuota');
 
 /**
  * Usage Analytics

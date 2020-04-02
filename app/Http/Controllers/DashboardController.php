@@ -27,12 +27,26 @@ class DashboardController extends Controller
     }
 
     /**
-     * Show the api usage page.
+     * Show the api usage view.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function usage()
     {
         return view('dashboard.usage.index');
+    }
+
+    /**
+     * Get the billing view.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function billing(Request $request)
+    {
+        return view('dashboard.billing.index', [
+            'intent' => $request->user()->createSetupIntent(),
+            'paymentMethods' => $request->user()->paymentMethods()
+        ]);
     }
 }
