@@ -20,7 +20,7 @@
         "laravel/tinker": "^1.0",
         "laravel/ui": "^1.2",
         "predis/predis": "^1.1",
-        "tnkemdilim/money-to-words-converter": "^2"
+        "tuforti/money-to-words-translator": "dev-develop"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
@@ -30,6 +30,12 @@
         "nunomaduro/collision": "^3.0",
         "phpunit/phpunit": "^7.5"
     },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@github.com:TNkemdilim/tuforti-money-to-words-translator.git"
+        }
+    ],
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",

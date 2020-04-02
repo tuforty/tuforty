@@ -4,7 +4,7 @@ namespace App\Http\Requests\MoneyTranslate;
 
 use ReflectionClass;
 use Illuminate\Foundation\Http\FormRequest;
-use TNkemdilim\MoneyToWords\Languages as Language;
+use Tuforti\MoneyToWords\Languages as Language;
 
 class GetTranslationRequest extends FormRequest
 {

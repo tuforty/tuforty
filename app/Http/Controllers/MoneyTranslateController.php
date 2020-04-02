@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Enums\UsageType;
 use Illuminate\Http\Request;
-use TNkemdilim\MoneyToWords\Converter;
+use Tuforti\MoneyToWords\Converter;
 use App\Http\Requests\MoneyTranslate\GetTranslationRequest;
 
 class MoneyTranslateController extends Controller
