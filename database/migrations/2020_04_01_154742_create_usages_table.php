@@ -21,7 +21,7 @@ class CreateUsagesTable extends Migration
                 ->references('id')
                 ->on('users');
 
-            $table->enum('type', UsageType::getValues());
+            $table->enum('type', UsageType::getValues())->index();
             $table->integer('quota_used')->default(1);
             $table->timestamps();
         });

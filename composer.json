@@ -20,7 +20,7 @@
         "laravel/tinker": "^1.0",
         "laravel/ui": "^1.2",
         "predis/predis": "^1.1",
-        "tuforti/money-to-words-translator": "dev-develop"
+        "tuforti/money-to-words-translator": "master"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

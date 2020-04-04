@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\Enums\UsageType;
-use Illuminate\Http\Request;
-use Tuforti\MoneyToWords\Converter;
+use App\Services\MoneyToWords\Converter;
 use App\Http\Requests\MoneyTranslate\GetTranslationRequest;
 
 class MoneyTranslateController extends Controller
@@ -28,27 +27,25 @@ class MoneyTranslateController extends Controller
      */
     public function get(GetTranslationRequest $request)
     {
+        // Perform conversion
         $language = $request->language;
         $whole_unit = $request->whole_unit;
         $decimal_unit = $request->decimal_unit;
-
-        // Perform conversion
-        $converter = new Converter($whole_unit, $decimal_unit, $language);
+        $converter = Converter::getInstance($whole_unit, $decimal_unit, $language);
         $translation = $converter->convert($request->value);
-        // TODO: Tweak the library to support this.
-        $whole_translation  = '';
-        $decimal_translation  = '';
 
         // Decrease quota
         $request->user()->decrementQuota(UsageType::TranslateMoneyToWords());
 
-        return response()->json(compact(
-            'translation',
-            'whole_unit',
-            'decimal_unit',
-            'language',
-            'whole_translation',
-            'decimal_translation'
-        ));
+        return response()->json(
+            array_merge(
+                compact('whole_unit', 'decimal_unit', 'language'),
+                [
+                    'translation' => $translation->full,
+                    'whole_translation' => $translation->whole,
+                    'decimal_translation' => $translation->decimal
+                ]
+            )
+        );
     }
 }
