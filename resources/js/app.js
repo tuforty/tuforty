@@ -4,9 +4,13 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require('./bootstrap')
+import 'es6-promise/auto'
 
-window.Vue = require('vue');
+window.Vue = require('vue')
+Vue.use(Buefy, {
+    defaultIconPack: 'fas'
+})
 
 /**
  * The following block of code may be used to automatically register your
@@ -41,4 +45,16 @@ Vue.component(
 
 const app = new Vue({
     el: '#app',
-});
+
+    data() {
+        return {
+            mobileMenuOpen: false
+        }
+    },
+
+    methods: {
+        toggleMobileMenu() {
+            this.mobileMenuOpen = !this.mobileMenuOpen
+        },
+    }
+})
