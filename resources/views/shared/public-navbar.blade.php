@@ -1,14 +1,12 @@
-<nav class="navbar is-fixed-top has-background-dark" role="navigation" aria-label="main navigation">
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         @auth
-            <a class="navbar-item hax-text-white" href="{{ url('/dashboard') }}">
-                <img src="https://bulma.io/images/bulma-logo-white.png" width="112" height="28" alt="Bulma">
-                {{-- {{ env('APP_NAME', 'Laravel') }} --}}
+            <a class="navbar-item" href="{{ url('/dashboard') }}">
+                {{ env('APP_NAME', 'Laravel') }}
             </a>
         @else    
-            <a class="navbar-item hax-text-white" href="{{ url('/') }}">
-                <img src="https://bulma.io/images/bulma-logo-white.png" width="112" height="28" alt="Bulma">
-                {{-- {{ env('APP_NAME', 'Laravel') }} --}}
+            <a class="navbar-item" href="{{ url('/') }}">
+                {{ env('APP_NAME', 'Laravel') }}
             </a>
         @endauth
 
@@ -19,7 +17,11 @@
         </a>
     </div>
 
-    <div id="primary-nav" class="navbar-menu">
+    <div id="primary-nav" :class="['navbar-menu', { 'is-active': mobileMenuOpen }]">
+        <div class="navbar-start">
+            
+        </div>
+
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
@@ -41,11 +43,11 @@
                         
                     @else
                         @if (Route::has('register'))
-                            <a class="button is-primary" href="{{ route('register') }}">
+                            <a class="button is-primary is-small" href="{{ route('register') }}">
                                 <strong>Register</strong>
                             </a>
                         @endif
-                        <a class="button is-success" href="{{ route('login') }}">
+                        <a class="button is-light is-small" href="{{ route('login') }}">
                             Login
                         </a>
                     @endauth

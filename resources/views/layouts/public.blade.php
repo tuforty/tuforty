@@ -13,7 +13,6 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="https://js.stripe.com/v3/"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
@@ -26,13 +25,22 @@
 </head>
 <body>
     <div id="app">
-        @include('shared.navbar')
-
-        <main class="content" style="margin-bottom: 0; overflow: auto;">
-            @yield('content')
+        <main class="content">
+            <section class="hero is-dark is-large">
+                <div class="hero-head">
+                    @include('shared.navbar')
+                </div>
+                <div class="hero-body">
+                    @yield('navbar-hero-body')
+                </div>
+            </section>
+            
+            <div>
+                @yield('content')
+            </div>
+            
+            @include('shared.footer') 
         </main>
-
-        <div id="env-indicator" class="{{ kebab_case(env('APP_ENV')) }}"></div>
     </div>
 
 <!-- Scripts -->
