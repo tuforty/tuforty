@@ -14,7 +14,7 @@
           @csrf
         </form>
       @else
-        <li class="landing__nav__link"><a>Pricing</a></li>
+        <li class="landing__nav__link"><a>Documentaion</a></li>
         <li class="landing__nav__link"><a href="{{ route('login') }}">Login</a></li>
         @if (Route::has('register'))
           <li class="landing__nav__link"><a class="blue" href="{{ route('register') }}">Free Trial</a></li>

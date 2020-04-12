@@ -15,6 +15,10 @@
  * Landing Page
  */
 Route::view('/', 'welcome');
+/**
+ * Learn More Page
+ */
+Route::view('/learn-more', 'learn');
 
 /**
  * Authentication
@@ -29,7 +33,7 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashbord');
 
 /**
  * Dashboard > Billing
- * 
+ *
  * TODO: Bring this page to the dashboard controller method.
  */
 Route::get('/dashboard/billing', 'DashboardController@billing')->name('billing');
