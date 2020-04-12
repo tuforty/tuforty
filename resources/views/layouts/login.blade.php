@@ -20,7 +20,7 @@
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app" class="auth">
+    <div class="login">
       @yield('content')
     </div>
 

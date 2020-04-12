@@ -9,8 +9,8 @@
       Easily support translation for money values in over 50 indigienious
       languages, and make users feel home.
     </p>
-    <button class="button">
-      Start here
+    <button class="button button--dark">
+      Start Free Trial
     </button>
   </div>
   <lottie-player

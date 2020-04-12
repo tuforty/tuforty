@@ -1,5 +1,5 @@
-@extends('layouts.auth') @section('content')
-  <form class="auth__form" method="POST" action="{{ route('login') }}">
+@extends('layouts.login') @section('content')
+  <form class="login__form" method="POST" action="{{ route('login') }}">
     <h1>Sign into Tuforti</h1>
     @csrf
       <label for="email">Email</label>
@@ -42,16 +42,15 @@
         {{ old("remember") ? "checked" : "" }}> Remember me
       </label>
     </div> --}}
-
-    {{-- <div>
-      @if (Route::has('password.request'))
-      <a class="btn btn-link" href="{{ route('password.request') }}">
-        {{ __("Forgot Your Password?") }}
-      </a>
-      @endif
-    </div> --}}
     <button type="submit" class="button button--round fullWidth">
       Sign in
     </button>
+    <div>
+      @if (Route::has('password.request'))
+      <a class="button button--link fullWidth" href="{{ route('password.request') }}">
+        {{ __("Forgot Password?") }}
+      </a>
+      @endif
+    </div>
   </form>
 @endsection
