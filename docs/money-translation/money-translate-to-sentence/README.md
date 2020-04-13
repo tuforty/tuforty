@@ -20,7 +20,7 @@ To better understand the concept of translation, we've come up with a series of 
 
 ### Sample API Request
 
-{% api-method method="post" host="" path="/v1/translator/money" %}
+{% api-method method="post" host="https://api.tuforty.com" path="/v1/translator/money" %}
 {% api-method-summary %}
 Get translation
 {% endapi-method-summary %}
