@@ -10,7 +10,7 @@ At the core of our translation, comprises over **60+ languages** you could conve
 **Notice:** For simplicity, you'll be required to use the **abbreviated version** of each language in most cases.
 {% endhint %}
 
-### Available Languages
+## Available Languages
 
 | Language Name | Code |
 | :--- | :--- |
@@ -78,8 +78,4 @@ At the core of our translation, comprises over **60+ languages** you could conve
 | Ukrainian | uk |
 | Vietnamese | vi |
 | Yiddish | yi |
-
-
-
-
 

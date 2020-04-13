@@ -31,7 +31,7 @@ To change currency of translation if [money to words API request](./#api-request
 It is possible to specify what language to translate the into. This requires specifying an abbreviation of the language in the request body.
 
 {% hint style="success" %}
-**Supported Languages:** To get the short code for the current languages that we support, kindly check [supported languages.](../../supported-languages.md) 
+**Supported Languages:** To get the short code for the current languages that we support, kindly check [supported languages.]() 
 {% endhint %}
 {% endtab %}
 {% endtabs %}

@@ -10,7 +10,7 @@ To better understand quota are calculated, it's best to have a knowledge of how 
 
 | API | Quota Cost |
 | :--- | :--- |
-| [Into Localized Sentence](../../money-translation/money-to-words/) | 1 |
+| [Into Localized Sentence](../../money-translation/money-translate-to-sentence/) | 1 |
 
 {% hint style="info" %}
 See [manage quota](./) on how best monitor each purchased quota.

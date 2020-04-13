@@ -8,8 +8,8 @@
 
 ## 📜 Money Translation
 
-* [Into Localized Sentence](money-translation/money-to-words/README.md)
-  * [Customizing Translation](money-translation/money-to-words/customizing-translation.md)
+* [Into Localized Sentence](money-translation/money-translate-to-sentence/README.md)
+  * [Customizing Translation](money-translation/money-translate-to-sentence/customizing-translation.md)
 
 ## 💰Billing
 
