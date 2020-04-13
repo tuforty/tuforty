@@ -113,10 +113,10 @@ return [
     */
 
     'markdown' => [
-        'theme' => 'default',
+        'theme' => 'tuforty',
 
         'paths' => [
-            resource_path('views/vendor/mail'),
+            resource_path('views/emails/templates'),
         ],
     ],
 
