@@ -6,10 +6,6 @@ description: Translate monetary values into equivalent localized sentence.
 
 Any numeric value signifying an amount of money, can be easily translated to words equivalent in any language of choice.
 
-{% hint style="info" %}
- **Quota Usage:** Each translation counts as **one \(1\)** quota from your overall quota.
-{% endhint %}
-
 To better understand the concept of translation, we've come up with a series of example that better explain it:
 
 | Amount | Currency | Language | Translation |
