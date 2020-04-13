@@ -22,4 +22,5 @@
 
 * [FAQs](miscellaneous/faqs.md)
 * [What's next?](miscellaneous/whats-next.md)
+* [Submit Feedback](https://tuforti.typeform.com/to/pA4s9j)
 

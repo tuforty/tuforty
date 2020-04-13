@@ -8,9 +8,7 @@ We are constantly evolving, and we're exploring diverse ways we can serve you be
 
 Hence, we'll very much appreciate your feedbacks, suggestions, and anticipated features that currently do not exist, and could help increase customer engagement with your product\(s\).
 
-Please do feel free to feel the form below:
+Please do feel free to feel to submit feedback [here](https://tuforti.typeform.com/to/pA4s9j).
 
 
-
- 
 

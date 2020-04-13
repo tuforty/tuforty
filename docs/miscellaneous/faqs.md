@@ -6,7 +6,7 @@ description: Frequently asked questions.
 
 ## Why is there only one translation type currently available?
 
-Considering that we're a small team, we are very intentional about building services that our users want, and not what we feel they want. Do you have a suggested feature in mind, kindly [message us](whats-next.md).
+Considering that we're a small team, we are very intentional about building services that our users want, and not what we feel they want. Do you have a suggested feature in mind, we would appreciate filling our [feedback form](https://tuforti.typeform.com/to/pA4s9j).
 
 ## Are you currently hiring?
 

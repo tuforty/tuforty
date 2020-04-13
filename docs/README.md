@@ -8,14 +8,14 @@ This documentation comprises everything you'll require to get started with trans
 
 * [Supported Languages](supported-languages.md)
 * [Getting/Renewing API Keys](get-api-key/)
-* [Authentication](authorization.md)
+* [Authorization](authorization.md)
 * Available APIs
-  * Money translation related 
+  * [Money translation](money-translation/money-translate-to-sentence/)
 * Billing
   * [Manage Quota](billing/manage-quota/)
   * [Renewing Subscription](billing/renew-subscription.md)
 * Miscellaneous
-  * [Frequently Asked Question](miscellaneous/faqs.md)
+  * [Frequently Asked Questions](miscellaneous/faqs.md)
   * [What's next?](miscellaneous/whats-next.md)
 
 {% hint style="info" %}
