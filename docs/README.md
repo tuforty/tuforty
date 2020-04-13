@@ -4,11 +4,11 @@ description: Simple guide on how to get started integrating with our translation
 
 # 🚀 Getting Started
 
-This documentation comprises everything you'll require to get started with translation. It has been categorized into the following:
+This documentation comprises everything you'll require to get started with translating. It has been categorized into the following:
 
 * [Supported Languages](supported-languages.md)
 * [Getting/Renewing API Keys](get-api-key/)
-* [Authentication](authentication.md)
+* [Authentication](authorization.md)
 * Available APIs
   * Money translation related 
 * Billing

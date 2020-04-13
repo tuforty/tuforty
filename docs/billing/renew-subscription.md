@@ -1,2 +1,2 @@
-# 🧧 Renew Subscription
+# Renew Subscription
 

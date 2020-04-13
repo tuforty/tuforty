@@ -4,7 +4,7 @@
 * [🌍 Supported Languages](supported-languages.md)
 * [🔑 Getting Your API Key](get-api-key/README.md)
   * [Regenerate API Key](get-api-key/regenerate-api-key.md)
-* [🔐 Authentication](authentication.md)
+* [🔐 Authorization](authorization.md)
 
 ## 📜 Money Translation
 
@@ -13,12 +13,13 @@
 
 ## 💰Billing
 
-* [🧾 Manage Quota](billing/manage-quota/README.md)
+* [Manage Quota](billing/manage-quota/README.md)
   * [Setting Quota Threshold](billing/manage-quota/setting-quota-threshold.md)
-* [🧧 Renew Subscription](billing/renew-subscription.md)
+* [Renew Subscription](billing/renew-subscription.md)
+* [Purchase Quota](https://tuforty.com/pricing)
 
 ## 🗞 Miscellaneous
 
-* [❓ FAQs](miscellaneous/faqs.md)
-* [🎠 What's next?](miscellaneous/whats-next.md)
+* [FAQs](miscellaneous/faqs.md)
+* [What's next?](miscellaneous/whats-next.md)
 

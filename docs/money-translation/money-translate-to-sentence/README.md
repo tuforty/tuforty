@@ -4,7 +4,7 @@ description: Translate monetary values into equivalent localized sentence.
 
 # Into Localized Sentence
 
-Any numeric value signifying an amount of money, can be easily translated to words equivalent in any language of choice.
+Any numeric value signifying an amount of money can easily be translated to the sentence equivalent in any _language of choice_.
 
 To better understand the concept of translation, we've come up with a series of example that better explain it:
 

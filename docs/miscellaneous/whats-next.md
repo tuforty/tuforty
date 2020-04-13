@@ -2,7 +2,7 @@
 description: Track our progress in the coming months.
 ---
 
-# 🎠 What's next?
+# What's next?
 
 We are constantly evolving, and we're exploring diverse ways we can serve you better, alongside empowering you to build more socio-friendly application.
 

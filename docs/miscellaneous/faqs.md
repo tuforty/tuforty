@@ -2,7 +2,7 @@
 description: Frequently asked questions.
 ---
 
-# ❓ FAQs
+# FAQs
 
 ## Why is there only one translation type currently available?
 
