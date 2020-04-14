@@ -42,3 +42,13 @@ Route::get('/dashboard/billing', 'DashboardController@billing')->name('billing')
  * Dashboard > Usage
  */
 Route::get('/dashboard/usage', 'DashboardController@usage')->name('usage');
+
+/**
+ * Locl Enviroment > Mailers
+ */
+if (app()->environment('local')) {
+    Route::get('/mailable', function () {
+        $user = App\Models\User::find(1);
+        return (new App\Mail\QuotaThresholdExceededMail($user))->render();
+    });
+}
