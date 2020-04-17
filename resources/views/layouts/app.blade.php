@@ -19,20 +19,19 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway:500,500i,700,700i|Roboto+Slab:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
-
-    <!-- Styles -->
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+      <!-- Styles -->
     <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     @include('shared.drift')
 </head>
 <body>
-    <div id="app">
-        @include('shared.navbar')
+    <div class="app">
+      @include('shared.sidebar')
+      <main class="app__content">
         @yield('content')
-        @include('shared.footer')
-    </div>
+      </main>
+    </main>
 
 <!-- Scripts -->
 @if (config('APP_ENV') === 'local')

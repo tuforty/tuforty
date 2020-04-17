@@ -14,7 +14,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script defer src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/reset.css') }}" rel="stylesheet">

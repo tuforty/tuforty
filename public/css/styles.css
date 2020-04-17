@@ -1,9 +1,12 @@
+/* VARIABLES */
 :root {
   --blue: #254fdb;
-  --light-blue: #6382e6;
+  --cyan: #00e1ff;
   --white: #fff;
-  --black: #000;
+  --black: #333333;
 }
+
+/* FONTS */
 
 @font-face {
   font-family: "SQ Market";
@@ -22,6 +25,8 @@
   src: url("../fonts/sqmarket-bold.ttf");
   font-weight: bold;
 }
+
+/* NATIVE ELEMENTS */
 
 body {
   font-family: "SQ Market", -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -50,14 +55,17 @@ a:visited {
   color: inherit;
 }
 
+/* COMPONENTS */
+
 .button {
-  display: flex;
+  display: block;
   justify-content: center;
   align-items: center;
   border: none;
-  background-color: var(--light-blue);
+  background-color: var(--cyan);
   color: var(--white);
   font-family: "SQ Market";
+  padding: 10px 15px;
   font-weight: bold;
   border-radius: 8px;
   width: 170px;
@@ -77,8 +85,94 @@ a:visited {
 
 .button--link {
   background-color: transparent !important;
-  color: var(--light-blue);
+  color: var(--cyan);
 }
+
+.button--large {
+  height: 80px;
+  width: 200px;
+  font-size: 30px;
+}
+
+.button--large.button--round {
+  border-radius: 38px !important;
+}
+
+.card {
+  width: 100%;
+  border-radius: 12px;
+  color: #b3b3b3;
+  border: 1px solid #ececec;
+  overflow: hidden;
+  padding: 10px;
+  min-height: 70px;
+  color: var(--black);
+  box-sizing: border-box;
+}
+
+.card--plain {
+  border: none;
+  background: #fff;
+}
+
+.card--small {
+  border-radius: 6px;
+}
+
+.input {
+  font-family: "SQ Market";
+  font-weight: normal;
+  border-radius: 4px;
+  border: none;
+  outline: 0;
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 22px;
+  height: 55px;
+  text-rendering: auto;
+  color: -internal-light-dark-color(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  background-color: var(--white);
+  cursor: text;
+  box-sizing: border-box;
+}
+
+.input.input--error {
+  background-color: #ffe3e3;
+  border: 1px solid #e12d39;
+}
+
+.input.input--border {
+  border: 1px solid #ebebeb;
+}
+
+.input__error-message {
+  color: #ff8e8e;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.fullWidth {
+  width: 100% !important;
+}
+
+.feed {
+  width: 100%;
+  max-width: 500px;
+  padding: 5px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+.feed > * {
+  margin: 10px 0;
+}
+
+/* LAYOUTS */
 
 .landing {
   display: flex;
@@ -355,43 +449,110 @@ a:visited {
   font-size: 18px;
 }
 
-.input {
-  font-family: "SQ Market";
-  font-weight: normal;
-  border-radius: 4px;
-  border: none;
-  outline: 0;
+.app {
+  background-color: #f7f7f7;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  grid-template-areas: "sidebar content";
+}
+
+.app__sidebar {
+  grid-area: sidebar;
+  height: 100vh;
+  background-color: var(--blue);
+  color: #fff;
+  box-sizing: border-box;
+  padding: 70px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.app__sidebar__avatar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
-  margin-bottom: 16px;
-  font-size: 22px;
-  height: 55px;
-  text-rendering: auto;
-  color: -internal-light-dark-color(black, white);
-  letter-spacing: normal;
-  word-spacing: normal;
-  text-transform: none;
-  text-indent: 0px;
-  text-shadow: none;
-  background-color: var(--white);
-  cursor: text;
+}
+
+.app__sidebar__avatar {
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+  border: 2px solid #fff;
+  margin: 30px auto;
+}
+
+.app__sidebar__username {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 10px 0;
+}
+
+.app__sidebar__email {
+  font-size: 14px;
+}
+
+.app__content {
+  height: 100vh;
+  overflow-y: auto;
   box-sizing: border-box;
 }
 
-.input.input--error {
-  background-color: #ffe3e3;
-  border: 1px solid #e12d39;
+.app__sidebar__links {
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+  list-style: none;
+  margin-left: 40px;
 }
 
-.input.input--border {
-  border: 1px solid #ebebeb;
+.app__sidebar__links a {
+  margin: 20px 0;
+  color: var(--cyan);
+  font-size: 18px;
+  display: flex;
+  font-weight: 500;
+  align-items: center;
 }
 
-.input__error-message {
-  color: #ff8e8e;
-  font-weight: bold;
-  margin-bottom: 15px;
+.app__sidebar__links a.active {
+  color: var(--white);
 }
 
-.fullWidth {
-  width: 100% !important;
+.app__sidebar__links ion-icon {
+  min-width: 32px;
+  min-height: 32px;
+}
+
+.app__sidebar__links a span {
+  margin-left: 20px;
+}
+
+.api-keys__page {
+  padding-top: 20vh;
+}
+
+.api-key {
+  font-size: 30px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.api-key__card {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+}
+
+.api-key__card > * {
+  margin: 0 10px;
+}
+
+.api-keys__actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
 }
