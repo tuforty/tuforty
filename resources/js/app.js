@@ -4,13 +4,12 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap')
-import 'es6-promise/auto'
+require("./bootstrap");
+import "es6-promise/auto";
 
-window.Vue = require('vue')
-Vue.use(Buefy, {
-    defaultIconPack: 'fas'
-})
+window.Vue = require("vue");
+
+Vue.config.performance = true;
 
 /**
  * The following block of code may be used to automatically register your
@@ -23,18 +22,38 @@ Vue.use(Buefy, {
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 Vue.component(
-    'manage-api-tokens',
-    require('./components/ManageToken.vue').default
+  "manage-api-tokens",
+  require("./components/tokens/ManageToken.vue").default
 );
 
 Vue.component(
-    'billing-manage-cards',
-    require('./components/billing/ManageCards.vue').default
+  "billing-payments",
+  require("./components/billing/BillingPayments.vue").default
 );
 
 Vue.component(
-    'usage-show',
-    require('./components/usage/ShowUsage.vue').default
+  "billing-status",
+  require("./components/billing/BillingStatus.vue").default
+);
+
+Vue.component(
+  "usage-show",
+  require("./components/usage/ShowUsage.vue").default
+);
+
+Vue.component(
+  "slide-input",
+  require("./components/common/SlideInput.vue").default
+);
+
+Vue.component(
+  "option-list",
+  require("./components/common/OptionList.vue").default
+);
+
+Vue.component(
+  "error-message",
+  require("./components/common/ErrorMessage.vue").default
 );
 
 /**
@@ -44,17 +63,5 @@ Vue.component(
  */
 
 const app = new Vue({
-    el: '#app',
-
-    data() {
-        return {
-            mobileMenuOpen: false
-        }
-    },
-
-    methods: {
-        toggleMobileMenu() {
-            this.mobileMenuOpen = !this.mobileMenuOpen
-        },
-    }
-})
+  el: "#app"
+});

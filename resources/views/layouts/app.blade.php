@@ -15,8 +15,6 @@
 
     <!-- Scripts -->
     <script src="https://js.stripe.com/v3/"></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
@@ -26,7 +24,7 @@
     @include('shared.drift')
 </head>
 <body>
-    <div class="app">
+    <div id="app">
       @include('shared.sidebar')
       <main class="app__content">
         @yield('content')
@@ -34,7 +32,7 @@
     </main>
 
 <!-- Scripts -->
-@if (config('APP_ENV') === 'local')
+@if (env('app.env') === 'local')
     <script src="{{ mix('js/app.js') }}"></script>
 @else
     <script src="{{ mix('js/manifest.js') }}"></script>

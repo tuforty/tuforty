@@ -1,16 +1,20 @@
 <template>
-  <div class="card">
-    <div class="card-header">Payment Methods</div>
-    <div class="card-body">
-      <div>
-        Available payment method
-        <a v-for="(paymentMethod, index) of paymentMethods" :key="index">
-          {{ paymentMethod }}
-        </a>
-      </div>
-      <br />
-
-      <div>
+  <div class="billing-payment">
+    <div class="title">Payment</div>
+    <option-list
+      title="Payment Method"
+      description="Select how you would like to pay"
+      :options="paymentOptions"
+      v-model="selectedPaymentMethod"
+    />
+    <option-list
+      title="Plan"
+      description="Select the plan you would like to pay for"
+      :options="paymentPlans"
+      v-model="selectedPaymentPlan"
+    />
+    <!-- <a v-for="(paymentMethod, index) of paymentMethods" :key="index">{{ paymentMethod }}</a> -->
+    <!-- <div>
         Select pricing plan
         <a
           v-for="([plan, info], index) of Object.entries(pricingPlans)"
@@ -19,29 +23,11 @@
           {{ JSON.stringify(plan) }} - Price: {{ info.price }} - Quota:
           {{ info.quota }}
         </a>
-      </div>
-      <br />
-
-      <div>
-        Save Card (Yes or No)
-      </div>
-
-      <input
-        type="text"
-        class="form-control"
-        v-model="cardHolder.name"
-        placeholder="Card holder's name"
-      />
-      <br />
-
-      <div ref="card"></div>
-      <div ref="errors" role="alert"></div>
-      <br />
-
-      <button ref="button" class="form-control btn-success" @click="checkout">
-        Save Payment method
-      </button>
-    </div>
+    </div>-->
+    <input type="text" class="input" v-model="cardHolder.name" placeholder="Card holder's name" />
+    <div ref="card"></div>
+    <div ref="errors" role="alert"></div>
+    <button ref="button" class="button fullWidth" @click="checkout">Save Payment method</button>
   </div>
 </template>
 
@@ -55,9 +41,33 @@ export default {
   data() {
     return {
       saveCard: true,
+      selectedPaymentMethod: "old-card",
+      selectedPaymentPlan: "starter",
       selectedPlan: "MINI",
       pricingPlans: [],
-      cardHolder: { name: "" }
+      cardHolder: { name: "" },
+      paymentOptions: [
+        {
+          label: "Old card",
+          value: "old-card"
+        },
+        {
+          label: "New card",
+          value: "new-card"
+        }
+      ],
+      paymentPlans: [
+        {
+          label: "Starter",
+          description: "2,500 translations for $20",
+          value: "starter"
+        },
+        {
+          label: "Start up",
+          description: "2,500 translations for $20",
+          value: "large-teams"
+        }
+      ]
     };
   },
 
@@ -94,7 +104,6 @@ export default {
         }
       );
       if (error) {
-        alert(error.message);
         throw Error(error);
       }
       return setupIntent.payment_method;
@@ -110,7 +119,6 @@ export default {
         { billing_details: { name: this.cardHolder.name } }
       );
       if (error) {
-        alert(error.message);
         throw Error(error);
       }
       return paymentMethod.id;
@@ -146,19 +154,33 @@ export default {
       try {
         const { data } = await axios.get("/api/pricing");
         this.pricingPlans = data.data;
-      } catch (err) {
-        alert("Failed to get pricing plans");
-      }
+      } catch (err) {}
     }
   }
 };
 </script>
 
-<style>
+<style scoped>
+.billing-payment {
+  display: flex;
+  flex-direction: column;
+}
+
+.billing-payment > * {
+  margin: 15px 0;
+}
+
+.title {
+  color: #00a1ff;
+  font-size: 22px;
+  font-weight: 500;
+}
+
 .StripeElement {
+  font-family: "SQ Market";
   box-sizing: border-box;
-  height: 40px;
-  padding: 10px 12px;
+  height: 70px;
+  padding: 25px 12px;
   border: 1px solid transparent;
   border-radius: 4px;
   background-color: white;
@@ -168,11 +190,11 @@ export default {
 }
 
 .StripeElement--focus {
-  box-shadow: 0 1px 3px 0 #cfd7df;
+  border: 1px solid #00a1ff;
 }
 
 .StripeElement--invalid {
-  border-color: #fa755a;
+  border-color: #b22222;
 }
 
 .StripeElement--webkit-autofill {
