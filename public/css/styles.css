@@ -323,6 +323,7 @@ a.button--dark.button--link {
 @media only screen and (max-width: 920px) {
   .landing {
     height: auto;
+    padding-top: 0;
   }
 
   .landing > * {
@@ -344,6 +345,9 @@ a.button--dark.button--link {
 
   .landing__hero .button {
     margin: 0 auto;
+  }
+  .landing__footer__top {
+    font-size: 15px;
   }
 
   lottie-player {
