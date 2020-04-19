@@ -22,12 +22,17 @@
 </head>
 <body>
     <div class="docs">
-      <a href="/" class="docs__header">
-        <img src="{{ asset('img/logo.svg') }}" alt="Logo" width="80" height="70">
-        <p>
-          {{ env('APP_NAME', 'Tuforti') }}
-        </p>
-      </a>
+      <div  class="docs__header">
+        <a href="/" class="docs__icon">
+          <img src="{{ asset('img/logo.svg') }}" alt="Logo" width="80" height="70">
+          <span>
+            {{ env('APP_NAME', 'Tuforti') }}
+          </span>
+        </a>
+        <a class="button button--dark button--link" href="{{ route('register') }}">
+          Get started
+        </a>
+      </div>
       @yield('content')
     </div>
 

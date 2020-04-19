@@ -9,9 +9,15 @@
       @click="setSelected(option.value)"
     >
       <label class="option-list__option__label">{{ option.label }}</label>
-      <span class="muted option-list__option__description">{{ option.description }}</span>
+      <span class="muted option-list__option__description">{{
+        option.description
+      }}</span>
       <div class="option-list__option__icon">
-        <ion-icon name="checkmark" size="large" v-if="option.value === selected"></ion-icon>
+        <ion-icon
+          name="checkmark"
+          size="large"
+          v-if="option.value === selected"
+        ></ion-icon>
       </div>
     </button>
   </div>

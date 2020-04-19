@@ -64,7 +64,8 @@ a:visited {
 
 /* COMPONENTS */
 
-.button {
+.button,
+a.button {
   display: block;
   justify-content: center;
   align-items: center;
@@ -82,6 +83,7 @@ a:visited {
   text-decoration: none;
   white-space: nowrap;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .button--round {
@@ -92,9 +94,16 @@ a:visited {
   background-color: var(--blue);
 }
 
-.button--link {
+.button--link,
+a.button--link {
   background-color: transparent !important;
   color: var(--light-blue);
+}
+
+.button--dark.button--link,
+a.button--dark.button--link {
+  background-color: transparent !important;
+  color: var(--blue);
 }
 
 .button--large {
@@ -185,6 +194,12 @@ a:visited {
   margin: 10px 0;
 }
 
+.title {
+  color: #00a1ff;
+  font-size: 22px;
+  font-weight: 500;
+}
+
 /* HELPER CLASSSES */
 
 .muted {
@@ -193,6 +208,14 @@ a:visited {
 
 .text-center {
   text-align: center;
+}
+
+.text-success {
+  color: #64d359;
+}
+
+.text-danger {
+  color: #b22222;
 }
 
 /* LAYOUTS */
@@ -432,7 +455,14 @@ a:visited {
 .docs .docs__header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+}
+
+.docs .docs__icon {
+  display: flex;
+  align-items: center;
   font-weight: 500;
+  font-size: 22px;
 }
 
 .docs .docs__header p {
@@ -472,7 +502,7 @@ a:visited {
   font-size: 18px;
 }
 
-#app {
+.app {
   background-color: #f7f7f7;
   display: grid;
   grid-template-columns: 280px 1fr;
@@ -489,6 +519,51 @@ a:visited {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: 0.3s ease all;
+  -webkit-transition: 0.3s ease all;
+  -moz-transition: 0.3s ease all;
+}
+
+.app__sidebar-toggle {
+  display: none;
+  background: none;
+  color: var(--light-blue);
+  border: none;
+  z-index: 2000;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  display: none;
+}
+
+.app__sidebar-toggle.close {
+  color: var(--white);
+}
+
+@media only screen and (max-width: 480px) {
+  .app {
+    grid-template-columns: 1fr;
+    grid-template-areas: "content";
+  }
+  .app__sidebar {
+    width: 100vw;
+    margin-left: -100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+  }
+  .app__sidebar.open {
+    margin-left: 0;
+    z-index: 100;
+  }
+  .app__sidebar-toggle {
+    display: block;
+  }
+  .app__sidebar__links {
+    margin-left: 25vw !important;
+  }
 }
 
 .app__sidebar__avatar-container {

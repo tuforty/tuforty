@@ -22,7 +22,9 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "apexcharts": "^3.18.1",
         "buefy": "^0.8.15",
-        "bulma-helpers": "^0.3.10"
+        "bulma-helpers": "^0.3.10",
+        "vue-apexcharts": "^1.5.3"
     }
 }

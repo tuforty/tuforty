@@ -39,11 +39,6 @@ Route::get('/dashboard', 'DashboardController@index')->name('dashbord');
 Route::get('/dashboard/billing', 'DashboardController@billing')->name('billing');
 
 /**
- * Dashboard > Usage
- */
-Route::get('/dashboard/usage', 'DashboardController@usage')->name('usage');
-
-/**
  * Dashboard > Api keys
  */
 Route::get('/dashboard/keys', 'DashboardController@keys')->name('keys');

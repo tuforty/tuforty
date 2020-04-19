@@ -24,10 +24,12 @@
           {{ info.quota }}
         </a>
     </div>-->
+    <div class="title">Card details</div>
     <input type="text" class="input" v-model="cardHolder.name" placeholder="Card holder's name" />
     <div ref="card"></div>
     <div ref="errors" role="alert"></div>
-    <button ref="button" class="button fullWidth" @click="checkout">Save Payment method</button>
+    <img class="stripe-logo" :src="'/img/powered_by_stripe.svg'" alt="powered by strip" />
+    <button ref="button" class="button fullWidth" @click="checkout">Save payment method</button>
   </div>
 </template>
 
@@ -187,6 +189,7 @@ export default {
   box-shadow: 0 1px 3px 0 #e6ebf1;
   -webkit-transition: box-shadow 150ms ease;
   transition: box-shadow 150ms ease;
+  margin: 0;
 }
 
 .StripeElement--focus {
@@ -199,5 +202,10 @@ export default {
 
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
+}
+
+.stripe-logo {
+  width: 100px;
+  margin: 0 auto !important;
 }
 </style>

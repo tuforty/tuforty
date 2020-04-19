@@ -27,16 +27,6 @@ class DashboardController extends Controller
   }
 
   /**
-   * Show the api usage view.
-   *
-   * @return \Illuminate\Contracts\Support\Renderable
-   */
-  public function usage()
-  {
-    return view('dashboard.usage.index');
-  }
-
-  /**
    * Show the api keys view.
    *
    * @return \Illuminate\Contracts\Support\Renderable

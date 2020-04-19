@@ -6,6 +6,7 @@
 
 require("./bootstrap");
 import "es6-promise/auto";
+import Vue from "vue";
 
 window.Vue = require("vue");
 
@@ -36,9 +37,11 @@ Vue.component(
   require("./components/billing/BillingStatus.vue").default
 );
 
+Vue.component("usage", require("./components/activity/Usage.vue").default);
+
 Vue.component(
-  "usage-show",
-  require("./components/usage/ShowUsage.vue").default
+  "chart-usage",
+  require("./components/activity/ChartUsage.vue").default
 );
 
 Vue.component(
@@ -52,9 +55,23 @@ Vue.component(
 );
 
 Vue.component(
+  "peroid-switcher",
+  require("./components/activity/PeroidSwitcher.vue").default
+);
+
+Vue.component(
+  "data-table",
+  require("./components/common/DataTable.vue").default
+);
+
+Vue.component(
   "error-message",
   require("./components/common/ErrorMessage.vue").default
 );
+
+Vue.use(window.VueApexCharts);
+
+Vue.component("apexchart", window.VueApexCharts);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

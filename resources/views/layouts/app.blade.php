@@ -24,22 +24,41 @@
     @include('shared.drift')
 </head>
 <body>
-    <div id="app">
-      @include('shared.sidebar')
-      <main class="app__content">
-        @yield('content')
-      </main>
+  <div id="app" class="app">
+    @include('shared.sidebar')
+    <main class="app__content">
+      @yield('content')
     </main>
+  </div>
 
 <!-- Scripts -->
 @if (env('app.env') === 'local')
-    <script src="{{ mix('js/app.js') }}"></script>
+  <script src="{{ mix('js/app.js') }}"></script>
 @else
-    <script src="{{ mix('js/manifest.js') }}"></script>
-    <script src="{{ mix('js/vendor.js') }}"></script>
-    <script src="{{ mix('js/app.js') }}"></script>
+  <script src="{{ mix('js/manifest.js') }}"></script>
+  <script src="{{ mix('js/vendor.js') }}"></script>
+  <script src="{{ mix('js/app.js') }}"></script>
 @endif
+  <script>
 
-@yield('scripts')
-</body>
+    const sideBar = document.querySelector(".app__sidebar");
+    const sideBarToggle = document.querySelector(".app__sidebar-toggle");
+
+    function toggleSideBar() {
+      if(sideBar.classList.contains("open")) {
+        sideBarToggle.querySelector("ion-icon").setAttribute("name", "menu");
+      } else {
+        sideBarToggle.querySelector("ion-icon").setAttribute("name", "close");
+      }
+      sideBar.classList.toggle("open")
+      sideBarToggle.classList.toggle("close")
+    }
+
+    sideBarToggle.addEventListener("click", toggleSideBar);
+
+  </script>
+
+
+  @yield('scripts')
+  </body>
 </html>

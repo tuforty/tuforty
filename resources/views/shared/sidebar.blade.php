@@ -1,3 +1,6 @@
+<button class="app__sidebar-toggle">
+  <ion-icon name="menu" size="large"></ion-icon>
+</button>
 <aside class="app__sidebar">
   <div class="app__sidebar__avatar-container">
     <img src="https://api.adorable.io/avatars/285/{{ Auth::user()->email }}" alt="" class="app__sidebar__avatar">
