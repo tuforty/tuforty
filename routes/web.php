@@ -15,14 +15,6 @@
  * Landing Page
  */
 Route::view('/', 'welcome');
-/**
- * Learn More Page
- */
-Route::view('/learn-more', 'learn');
-/**
- * Pricing Page
- */
-Route::view('/pricing', 'pricing');
 
 /**
  * Authentication

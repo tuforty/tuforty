@@ -1,5 +1,3 @@
-@extends('layouts.docs')
-@section('content')
 <main class="docs__hero">
   <section>
     <h1>
@@ -7,6 +5,7 @@
     </h1>
     <ul>
       <li>
+        <ion-icon name="bulb" size="large"></ion-icon>
         <h2>
           Starter
         </h2>
@@ -15,6 +14,7 @@
         </p>
       </li>
       <li>
+        <ion-icon name="people" size="large"></ion-icon>
         <h2>
           Startup
         </h2>
@@ -23,6 +23,7 @@
         </p>
       </li>
       <li>
+        <ion-icon name="business" size="large"></ion-icon>
         <h2>
           Large teams
         </h2>
@@ -33,4 +34,3 @@
     </ul>
   </section>
 </main>
-@endsection

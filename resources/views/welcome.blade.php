@@ -10,11 +10,11 @@
       languages, and make users feel home.
     </p>
     <button class="button button--dark">
-      Start Free Trial
+      Get started
     </button>
   </div>
   <lottie-player
-  src="https://assets10.lottiefiles.com/packages/lf20_b1cGf4.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop autoplay >
+  src="https://assets5.lottiefiles.com/packages/lf20_CueyLB.json"  background="transparent"  speed="1"  style="width: 400px; height: 400px;"  loop autoplay >
   </lottie-player>
 </main>
 @endsection

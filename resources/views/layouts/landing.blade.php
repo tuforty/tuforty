@@ -14,6 +14,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
     <script defer src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
     <!-- Styles -->
@@ -25,6 +26,10 @@
     <div id="app" class="landing">
       @include('shared.navbar')
       @yield('content')
+      <div class="docs">
+        @include('learn')
+        @include('pricing')
+      </div>
       @include('shared.footer')
     </div>
 

@@ -224,8 +224,8 @@ a.button--dark.button--link {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  padding: 70px 10px;
-  min-height: 100vh;
+  padding: 70px 0 0;
+  margin: 0;
   color: var(--black);
   box-sizing: border-box;
 }
@@ -285,6 +285,7 @@ a.button--dark.button--link {
   max-width: 1080px;
   width: 100%;
   margin: 0 auto;
+  min-height: 50vh;
 }
 
 .landing__hero h1 {
@@ -302,22 +303,31 @@ a.button--dark.button--link {
 }
 
 .landing__footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: var(--blue);
+  color: var(--white);
+  background-color: var(--black);
+  padding: 100px 40px;
 }
 
-.landing__footer__top {
+.landing__footer__content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: auto;
+  max-width: 900px;
+}
+
+.landing__footer section:last-of-type {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1080px;
+  flex-direction: column;
   width: 100%;
-  margin: 0 auto;
-  font-weight: bold;
-  font-size: 20px;
-  margin-bottom: 30px;
+  align-items: flex-end;
+}
+
+.landing__footer ul {
+  list-style-type: circle;
+}
+
+.landing__footer ul li {
+  margin: 40px 0;
 }
 
 @media only screen and (max-width: 920px) {
@@ -328,6 +338,10 @@ a.button--dark.button--link {
 
   .landing > * {
     margin: 30px 0;
+  }
+
+  .landing > *:last-child {
+    margin-bottom: 0;
   }
 
   .landing__nav__content {
@@ -346,8 +360,10 @@ a.button--dark.button--link {
   .landing__hero .button {
     margin: 0 auto;
   }
-  .landing__footer__top {
-    font-size: 15px;
+
+  .landing__footer__content {
+    grid-template-columns: 1fr;
+    grid-auto-flow: row;
   }
 
   lottie-player {
@@ -450,10 +466,26 @@ a.button--dark.button--link {
 
 .docs {
   width: 100%;
-  max-width: 800px;
-  padding: 20px;
+  padding: 20px 0;
   box-sizing: border-box;
-  margin: 30px auto;
+  margin: auto;
+}
+
+.docs section {
+  padding: 100px 20px;
+}
+
+.docs section ion-icon {
+  color: var(--blue);
+}
+
+.docs section.blue {
+  background-color: var(--blue);
+  color: #fff;
+}
+
+.docs section.blue ion-icon {
+  color: var(--white);
 }
 
 .docs .docs__header {
@@ -479,22 +511,31 @@ a.button--dark.button--link {
 
 .docs ul {
   list-style: none;
+  display: flex;
+  justify-content: center;
+  max-width: 1080px;
+  margin: auto;
+  flex-wrap: wrap;
 }
 
 .docs ul li {
-  border: 1px solid #ebebeb;
-  border-radius: 16px;
   padding: 20px;
-  margin: 30px 0;
-  padding-left: 60px;
-  background: url("../img/tick.svg") no-repeat;
-  background-position: 20px 40px;
-  background-size: 20px 20px;
+  margin: 20px;
+  text-align: center;
+  width: 250px;
+}
+
+.docs ul li.list {
+  padding: 20px;
+  margin: 20px;
+  text-align: left;
+  width: 300px;
 }
 
 .docs h1 {
   font-size: 45px;
-  margin: 60px 0;
+  margin: 30px 0;
+  text-align: center;
 }
 
 .docs h2 {

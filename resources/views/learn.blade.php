@@ -1,5 +1,3 @@
-@extends('layouts.docs')
-@section('content')
 <main class="docs__hero">
   <section>
     <h1>
@@ -7,6 +5,7 @@
     </h1>
     <ul>
       <li>
+        <ion-icon name="microphone" size="large"></ion-icon>
         <h2>
           Support for over 60 languages
         </h2>
@@ -15,6 +14,7 @@
         </p>
       </li>
       <li>
+        <ion-icon name="cash" size="large"></ion-icon>
         <h2>
           Translate from any numeric currency value
         </h2>
@@ -25,6 +25,7 @@
         </p>
       </li>
       <li>
+        <ion-icon name="code" size="large"></ion-icon>
         <h2>
           API support
         </h2>
@@ -35,12 +36,13 @@
       </li>
     </ul>
   </section>
-  <section>
+  <section class="blue">
     <h1>
       Use Cases
     </h1>
     <ul>
-      <li>
+      <li class="list">
+        <ion-icon name="cart" size="large"></ion-icon>
         <h2>
           E-Commerce
         </h2>
@@ -48,7 +50,8 @@
           Managing an ecommerce store that scales to various countries and regions, and requires communication prices to users in a simple and well defined way.
         </p>
       </li>
-      <li>
+      <li class="list">
+        <ion-icon name="paper" size="large"></ion-icon>
         <h2>
           Receipts/Invoice Generation
         </h2>
@@ -60,4 +63,3 @@
     </ul>
   </section>
 </main>
-@endsection
