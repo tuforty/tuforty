@@ -9,12 +9,10 @@
       Easily support translation for money values in over 50 indigienious
       languages, and make users feel home.
     </p>
-    <button class="button button--dark">
+    <button class="button button--dark button--round">
       Get started
     </button>
   </div>
-  <lottie-player
-  src="https://assets5.lottiefiles.com/packages/lf20_CueyLB.json"  background="transparent"  speed="1"  style="width: 400px; height: 400px;"  loop autoplay >
-  </lottie-player>
+  <img src="{{ asset('img/code.png') }}" alt="Code Sample">
 </main>
 @endsection

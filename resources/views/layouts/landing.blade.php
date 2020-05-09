@@ -26,10 +26,9 @@
     <div id="app" class="landing">
       @include('shared.navbar')
       @yield('content')
-      <div class="docs">
-        @include('learn')
-        @include('pricing')
-      </div>
+      @include('partials.features')
+      @include('partials.pricing')
+      @include('partials.usecases')
       @include('shared.footer')
     </div>
 
