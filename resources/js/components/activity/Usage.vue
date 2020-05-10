@@ -3,15 +3,11 @@
     <div class="card card--plain">
       <h2 class="title">Quota</h2>
       <div class="quota__item">
-        <h3>
-          <ion-icon name="timer" size="large"></ion-icon>Used
-        </h3>
+        <h3><ion-icon name="timer" size="large"></ion-icon>Used</h3>
         <span>{{ 200000 | formatNumber }}</span>
       </div>
       <div class="quota__item">
-        <h3>
-          <ion-icon name="hourglass" size="large"></ion-icon>Remaining
-        </h3>
+        <h3><ion-icon name="hourglass" size="large"></ion-icon>Remaining</h3>
         <span>{{ 200000 | formatNumber }}</span>
       </div>
     </div>
@@ -37,14 +33,8 @@ export default {
         headers: ["Code", "Language", "Total Translations"],
         alignments: ["left", "left", "right"],
         data: [
-          ["fr", "French", "20000"],
-          ["esp", "Spanish", "20000"],
-          ["esp", "Spanish", "20000"],
-          ["esp", "Spanish", "20000"],
-          ["esp", "Spanish", "20000"],
-          ["esp", "Spanish", "20000"],
-          ["esp", "Spanish", "20000"],
-          ["esp", "Spanish", "20000"]
+          ["FR", "French", "20000"],
+          ["ESP", "Spanish", "20000"]
         ]
       }
     };

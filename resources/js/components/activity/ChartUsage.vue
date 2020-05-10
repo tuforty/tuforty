@@ -4,8 +4,17 @@
     <span class="text-success usage__percentage">
       <ion-icon name="arrow-up"></ion-icon>22.9%
     </span>
-    <apexchart type="line" :options="chartOptions" :series="series[selectedPeroid]" height="300"></apexchart>
-    <peroid-switcher name="peroid" v-model="selectedPeroid" :options="peroidOptions"></peroid-switcher>
+    <apexchart
+      type="line"
+      :options="chartOptions"
+      :series="series[selectedPeroid]"
+      height="300"
+    ></apexchart>
+    <peroid-switcher
+      name="peroid"
+      v-model="selectedPeroid"
+      :options="peroidOptions"
+    ></peroid-switcher>
   </div>
 </template>
 
@@ -20,9 +29,18 @@ export default {
         }
       },
       xaxis: {
-        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
+        categories: [
+          "12th",
+          "13th",
+          "14th",
+          "15th",
+          "16th",
+          "17th",
+          "18th",
+          "20th"
+        ],
         labels: {
-          show: false
+          // show: false
         },
         axisBorder: {
           show: false
@@ -30,7 +48,7 @@ export default {
       },
       yaxis: {
         labels: {
-          show: false
+          // show: false
         }
       },
       grid: {
@@ -101,6 +119,7 @@ export default {
 
 <style scoped>
 #chart-usage {
+  margin-top: 50px;
   max-height: 500px;
 }
 
