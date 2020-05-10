@@ -1,19 +1,11 @@
 <template>
-  <div class="card card--plain">
+  <div id="chart-usage" class="card card--plain">
     <h3 class="title">Usage activity</h3>
-    <span class="text-success usage__percentage"
-      ><ion-icon name="arrow-up"></ion-icon> 22.9%</span
-    >
-    <apexchart
-      type="line"
-      :options="chartOptions"
-      :series="series[selectedPeroid]"
-    ></apexchart>
-    <peroid-switcher
-      name="peroid"
-      v-model="selectedPeroid"
-      :options="peroidOptions"
-    ></peroid-switcher>
+    <span class="text-success usage__percentage">
+      <ion-icon name="arrow-up"></ion-icon>22.9%
+    </span>
+    <apexchart type="line" :options="chartOptions" :series="series[selectedPeroid]" height="300"></apexchart>
+    <peroid-switcher name="peroid" v-model="selectedPeroid" :options="peroidOptions"></peroid-switcher>
   </div>
 </template>
 
@@ -108,6 +100,10 @@ export default {
 </script>
 
 <style scoped>
+#chart-usage {
+  max-height: 500px;
+}
+
 .usage__percentage {
   display: flex;
   align-items: center;

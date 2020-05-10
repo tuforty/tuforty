@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="feed">
+  <div id="home">
     <chart-usage></chart-usage>
     <usage></usage>
   </div>

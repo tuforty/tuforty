@@ -3,16 +3,16 @@
     <div class="card card--plain">
       <h2 class="title">Quota</h2>
       <div class="quota__item">
-        <h3><ion-icon name="timer" size="large"></ion-icon> Used</h3>
-        <span>
-          {{ 200000 | formatNumber }}
-        </span>
+        <h3>
+          <ion-icon name="timer" size="large"></ion-icon>Used
+        </h3>
+        <span>{{ 200000 | formatNumber }}</span>
       </div>
       <div class="quota__item">
-        <h3><ion-icon name="hourglass" size="large"></ion-icon> Remaining</h3>
-        <span>
-          {{ 200000 | formatNumber }}
-        </span>
+        <h3>
+          <ion-icon name="hourglass" size="large"></ion-icon>Remaining
+        </h3>
+        <span>{{ 200000 | formatNumber }}</span>
       </div>
     </div>
     <div class="card card--plain">
@@ -38,6 +38,12 @@ export default {
         alignments: ["left", "left", "right"],
         data: [
           ["fr", "French", "20000"],
+          ["esp", "Spanish", "20000"],
+          ["esp", "Spanish", "20000"],
+          ["esp", "Spanish", "20000"],
+          ["esp", "Spanish", "20000"],
+          ["esp", "Spanish", "20000"],
+          ["esp", "Spanish", "20000"],
           ["esp", "Spanish", "20000"]
         ]
       }
@@ -69,7 +75,22 @@ export default {
 
 <style>
 .activity {
-  margin-top: 50px;
+  display: grid;
+  grid-column-gap: 30px;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 20px;
+}
+
+@media only screen and (max-width: 1080px) {
+  .activity {
+    grid-template-columns: 1fr;
+    grid-auto-flow: row;
+  }
+}
+
+.activity .card {
+  height: 300px;
+  overflow: scroll;
 }
 
 .activity > * {

@@ -225,7 +225,7 @@ a.button--dark.button--link:hover {
 }
 
 .title {
-  color: #00a1ff;
+  color: var(--black);
   font-size: 22px;
   font-weight: 500;
 }
@@ -826,4 +826,10 @@ a.button--dark.button--link:hover {
 
 .app__sidebar__links a span {
   margin-left: 20px;
+}
+
+#home {
+  width: 100%;
+  max-width: 900px;
+  margin: auto;
 }
