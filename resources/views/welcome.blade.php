@@ -13,6 +13,20 @@
       Get started
     </button>
   </div>
-  <img src="{{ asset('img/code.png') }}" alt="Code Sample">
+  <div class="text-editor__container">
+    <div class="text-editor__icon close"></div>
+    <div class="text-editor__icon minimize"></div>
+    <div class="text-editor__icon resize"></div>
+    <pre class="text-editor">
+      <code class="language-bash">
+
+
+curl --header "Content-Type: application/json" \
+    --request POST \
+    --data '{"value":"10000","language":"fr", decimal_unit: "cents"}' \
+    https://api.tuforty.com/v1/translator/money
+      </code>
+    </pre>
+  </div>
 </main>
 @endsection

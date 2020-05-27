@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
+  <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,15 +14,15 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-    <script defer src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    <link async href="{{ asset('css/prism.css') }}" rel="stylesheet">
+    <script async src="{{ asset('js/prism.js') }}"></script>
     @include('shared.drift')
-</head>
-<body>
+  </head>
+  <body>
     <div id="app" class="landing">
       @include('shared.navbar')
       @yield('content')
@@ -42,5 +42,5 @@
 @endif
 
 @yield('scripts')
-</body>
+  </body>
 </html>

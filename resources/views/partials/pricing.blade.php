@@ -22,7 +22,7 @@
       <h2>Large teams</h2>
       <span class="price">$300<sub>/month</sub></span>
       <p> 200,000 translations</p>
-      <a class="button button--yellow" href="{{ route('register') }}">Sign up</a>
+      <a class="button button--dark" href="{{ route('register') }}">Sign up</a>
     </div>
   </section>
 </div>
