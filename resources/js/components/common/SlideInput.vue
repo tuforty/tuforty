@@ -27,7 +27,7 @@ export default {
   methods: {
     applyFill(slider) {
       const settings = {
-        fill: "#00a1ff",
+        fill: "var(--blue)",
         background: "#d7dcdf"
       };
 
@@ -54,7 +54,7 @@ export default {
   width: 100%;
   height: 10px;
   border-radius: 5px;
-  background: #00a1ff;
+  background: var(--blue);
   outline: none;
   padding: 0;
   margin: 0;
@@ -65,7 +65,7 @@ export default {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #00a1ff;
+  background: var(--blue);
   cursor: pointer;
   transition: background 0.15s ease-in-out;
 }
@@ -100,7 +100,7 @@ export default {
 }
 
 .range-slider__value {
-  color: #00a1ff;
+  color: var(--blue);
   font-size: 25px;
   font-weight: 500;
 }

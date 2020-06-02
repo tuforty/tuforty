@@ -1,0 +1,32 @@
+:root {
+  --blue: #254fdb;
+  --white: #fff;
+  --black: #333333;
+  --grey: #999;
+}
+
+/* FONTS */
+
+@font-face {
+  font-family: "SQ Market";
+  src: url("../fonts/sqmarket-light.ttf");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "SQ Market";
+  src: url("../fonts/sqmarket-regular.ttf");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "SQ Market";
+  src: url("../fonts/sqmarket-medium.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "SQ Market";
+  src: url("../fonts/sqmarket-bold.ttf");
+  font-weight: bold;
+}

@@ -1,35 +1,27 @@
 <template>
-  <div class="feed api-keys__page">
-    <h1 class="title">API key</h1>
-    <span class="info">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua.
-    </span>
-    <!-- <error-message v-if="error" :message="error"></error-message> -->
-    <div class="card api-key__card">
-      <!-- <p class="api-key" v-if="loading">Loading ...</p>
-      <p class="api-key" v-else-if="tokenVisible">{{token}}</p>
-      <p class="api-key" v-else>***************</p>
-      <ion-icon name="copy" size="large" v-if="token"></ion-icon>-->
-      <p class="api-key" v-if="tokenVisible">ksjrbeirbuebubuebueuevyeveyvey</p>
-      <p class="api-key" v-else>***************</p>
-      <button
-        class="copy-button"
-        v-clipboard:copy="message"
-        v-clipboard:success="onCopy"
-        v-clipboard:error="onCopyError"
-      >
-        <ion-icon name="copy" size="large"></ion-icon>
-      </button>
-    </div>
-    <!-- <div class="api-keys__actions" v-if="token"> -->
-    <div class="api-keys__actions">
-      <button class="button button--round fullWidth" @click="toggleToken">
-        Hide
-      </button>
-      <button class="button button--round fullWidth" @click="refreshToken">
-        Regenerate
-      </button>
+  <div id="api-key">
+    <h2 class="title">API Key</h2>
+    <div class="card card--plain">
+      <div class="api-key__container">
+        <p class="api-key" v-if="tokenVisible">ksjrbeirbuebubuebueuevyeveyvey</p>
+        <p class="api-key" v-else>***************</p>
+      </div>
+      <div class="api-keys__actions">
+        <button class="button button--link button--dark" @click="toggleToken">
+          <ion-icon :name="tokenVisible ? 'eye-off': 'eye'" size="large"></ion-icon>
+        </button>
+        <button class="button button--link button--dark" @click="refreshToken">
+          <ion-icon name="refresh" size="large"></ion-icon>
+        </button>
+        <button
+          class="button button--link button--dark"
+          v-clipboard:copy="message"
+          v-clipboard:success="onCopy"
+          v-clipboard:error="onCopyError"
+        >
+          <ion-icon name="copy" size="large"></ion-icon>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -86,48 +78,23 @@ export default {
 </script>
 
 <style scoped>
-.title {
-  color: #00a1ff;
-  font-size: 40px;
-  font-weight: bold;
-  text-align: center;
-}
-
-.info {
-  font-size: 20px;
-}
-
-.api-keys__page {
-  padding-top: 20vh;
-}
-
 .api-key {
   font-size: 18px;
   letter-spacing: 2px;
   text-align: center;
+  color: var(--blue);
 }
 
-.api-key__card {
+.api-key__container {
   display: flex;
-  height: 100%;
   align-items: center;
-  justify-content: center;
-  height: 150px;
-  border: none;
-}
-
-.api-key__card > * {
-  margin: 0 10px;
+  justify-content: space-evenly;
+  margin: 50px 0;
 }
 
 .api-keys__actions {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10px;
-}
-
-.copy-button {
-  background: none;
-  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 </style>

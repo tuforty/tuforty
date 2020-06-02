@@ -10,9 +10,7 @@
             alignCenter: alignments[index] === 'center',
             alignRight: alignments[index] === 'right'
           }"
-        >
-          {{ header }}
-        </th>
+        >{{ header }}</th>
       </tr>
     </thead>
     <tbody>
@@ -25,9 +23,7 @@
             alignCenter: alignments[j] === 'center',
             alignRight: alignments[j] === 'right'
           }"
-        >
-          {{ point }}
-        </td>
+        >{{ point }}</td>
       </tr>
     </tbody>
   </table>
@@ -52,7 +48,7 @@ export default {
 
 .table thead {
   font-size: 18px;
-  color: #00a1ff;
+  color: var(--blue);
   font-weight: 500;
 }
 

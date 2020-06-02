@@ -15,15 +15,9 @@
       </a>
     </li>
     <li>
-      <a href="/dashboard/keys" class="{{ Request::path() ==  'dashboard/keys' ? 'active' : '' }}">
-        <ion-icon name="key" size="large"></ion-icon>
-        <span>API key</span>
-      </a>
-    </li>
-    <li>
-      <a href="/dashboard/billing" class="{{ Request::path() ==  'dashboard/billing' ? 'active' : '' }}">
-        <ion-icon name="card" size="large"></ion-icon>
-        <span>Billing</span>
+      <a href="/dashboard/management" class="{{ Request::path() ==  'dashboard/management' ? 'active' : '' }}">
+        <ion-icon name="cog" size="large"></ion-icon>
+        <span>Manage</span>
       </a>
     </li>
     <li>

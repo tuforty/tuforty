@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="feed">
-  <billing-status></billing-status>
+<div id="managment">
+  <section>
+    <billing-status></billing-status>
+    <manage-api-tokens></manage-api-tokens>
+  </section>
   <billing-payments
       :payment-methods="{{ json_encode($paymentMethods) }}"
       intent-secret="{{ $intent->client_secret }}"

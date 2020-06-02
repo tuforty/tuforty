@@ -27,24 +27,14 @@ class DashboardController extends Controller
   }
 
   /**
-   * Show the api keys view.
-   *
-   * @return \Illuminate\Contracts\Support\Renderable
-   */
-  public function keys()
-  {
-    return view('dashboard.keys.index');
-  }
-
-  /**
-   * Get the billing view.
+   * Get the management view.
    *
    * @param  \Illuminate\Http\Request  $request
    * @return array
    */
-  public function billing(Request $request)
+  public function management(Request $request)
   {
-    return view('dashboard.billing.index', [
+    return view('dashboard.management.index', [
       'intent' => $request->user()->createSetupIntent(),
       'paymentMethods' => $request->user()->paymentMethods()
     ]);

@@ -1,6 +1,6 @@
 <template>
-  <div class="billing-payment">
-    <div class="title">Payment</div>
+  <section class="billing-payment">
+    <h2 class="title">Payment</h2>
     <option-list
       title="Payment Method"
       description="Select how you would like to pay"
@@ -13,24 +13,13 @@
       :options="paymentPlans"
       v-model="selectedPaymentPlan"
     />
-    <!-- <a v-for="(paymentMethod, index) of paymentMethods" :key="index">{{ paymentMethod }}</a> -->
-    <!-- <div>
-        Select pricing plan
-        <a
-          v-for="([plan, info], index) of Object.entries(pricingPlans)"
-          :key="index"
-        >
-          {{ JSON.stringify(plan) }} - Price: {{ info.price }} - Quota:
-          {{ info.quota }}
-        </a>
-    </div>-->
-    <div class="title">Card details</div>
+    <h2 class="title">Card details</h2>
     <input type="text" class="input" v-model="cardHolder.name" placeholder="Card holder's name" />
     <div ref="card"></div>
     <div ref="errors" role="alert"></div>
     <img class="stripe-logo" :src="'/img/powered_by_stripe.svg'" alt="powered by strip" />
-    <button ref="button" class="button fullWidth" @click="checkout">Save payment method</button>
-  </div>
+    <button ref="button" class="button button--dark fullWidth" @click="checkout">Save payment method</button>
+  </section>
 </template>
 
 <script>
@@ -173,7 +162,7 @@ export default {
 }
 
 .title {
-  color: #00a1ff;
+  color: #333333;
   font-size: 22px;
   font-weight: 500;
 }
@@ -193,7 +182,7 @@ export default {
 }
 
 .StripeElement--focus {
-  border: 1px solid #00a1ff;
+  border: 1px solid var(--blue);
 }
 
 .StripeElement--invalid {

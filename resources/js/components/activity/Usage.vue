@@ -3,11 +3,15 @@
     <div class="card card--plain">
       <h2 class="title">Quota</h2>
       <div class="quota__item">
-        <h3><ion-icon name="timer" size="large"></ion-icon>Used</h3>
+        <h3>
+          <ion-icon name="timer" size="large"></ion-icon>Used
+        </h3>
         <span>{{ 200000 | formatNumber }}</span>
       </div>
       <div class="quota__item">
-        <h3><ion-icon name="hourglass" size="large"></ion-icon>Remaining</h3>
+        <h3>
+          <ion-icon name="hourglass" size="large"></ion-icon>Remaining
+        </h3>
         <span>{{ 200000 | formatNumber }}</span>
       </div>
     </div>
@@ -103,11 +107,11 @@ export default {
   margin: 5px;
 }
 .quota__item h3 ion-icon {
-  color: #00a1ff;
+  color: var(--blue);
 }
 
 .quota__item span {
   font-size: 20px;
-  color: #00a1ff;
+  color: var(--blue);
 }
 </style>

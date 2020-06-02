@@ -28,13 +28,8 @@ Auth::routes(['verify' => true]);
 Route::get('/dashboard', 'DashboardController@index')->name('dashbord');
 
 /**
- * Dashboard > Billing
+ * Dashboard > Management
  *
  * TODO: Bring this page to the dashboard controller method.
  */
-Route::get('/dashboard/billing', 'DashboardController@billing')->name('billing');
-
-/**
- * Dashboard > Api keys
- */
-Route::get('/dashboard/keys', 'DashboardController@keys')->name('keys');
+Route::get('/dashboard/management', 'DashboardController@management')->name('management');

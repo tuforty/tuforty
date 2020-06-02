@@ -4,17 +4,8 @@
     <span class="text-success usage__percentage">
       <ion-icon name="arrow-up"></ion-icon>22.9%
     </span>
-    <apexchart
-      type="line"
-      :options="chartOptions"
-      :series="series[selectedPeroid]"
-      height="300"
-    ></apexchart>
-    <peroid-switcher
-      name="peroid"
-      v-model="selectedPeroid"
-      :options="peroidOptions"
-    ></peroid-switcher>
+    <apexchart type="line" :options="chartOptions" :series="series[selectedPeroid]" height="300"></apexchart>
+    <peroid-switcher name="peroid" v-model="selectedPeroid" :options="peroidOptions"></peroid-switcher>
   </div>
 </template>
 
@@ -55,7 +46,8 @@ export default {
         show: false
       },
       stroke: {
-        curve: "smooth"
+        curve: "smooth",
+        colors: ["#254fdb"]
       }
     },
     series: {

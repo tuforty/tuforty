@@ -1,22 +1,11 @@
 <template>
   <div class="option-switcher">
-    <div
-      v-for="(option, index) in options"
-      :key="index"
-      class="option-switcher__option"
-    >
+    <div v-for="(option, index) in options" :key="index" class="option-switcher__option">
       <label
         @click="setSelected(option.value)"
         v-bind:class="{ active: option.value === selected }"
-      >
-        {{ option.label }}
-      </label>
-      <input
-        :value="option.value"
-        type="radio"
-        :name="name"
-        v-model="selected"
-      />
+      >{{ option.label }}</label>
+      <input :value="option.value" type="radio" :name="name" v-model="selected" />
     </div>
   </div>
 </template>
@@ -56,7 +45,7 @@ export default {
 }
 
 .option-switcher__option label.active {
-  color: #00a1ff;
+  color: var(--blue);
 }
 
 .option-switcher__option input {

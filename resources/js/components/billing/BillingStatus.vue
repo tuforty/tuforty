@@ -43,7 +43,7 @@ export default {
 }
 
 .balance {
-  color: #00a1ff;
+  color: var(--blue);
   font-size: 60px;
   font-weight: 500;
   letter-spacing: 1.5px;
@@ -61,7 +61,7 @@ export default {
 
 .price {
   font-size: 20px;
-  color: #00a1ff;
+  color: var(--blue);
 }
 
 .status {

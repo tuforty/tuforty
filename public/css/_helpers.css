@@ -1,0 +1,15 @@
+.muted {
+  color: var(--grey);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-success {
+  color: #64d359;
+}
+
+.text-danger {
+  color: #b22222;
+}
