@@ -2,13 +2,20 @@
   <div class="billing-status">
     <span class="balance">{{ 35000000 | formatNumber }}</span>
     <span class="muted text-center">BALANCE</span>
-    <slide-input :value="threshold" label="Notification Threshold" name="threshold"></slide-input>
-    <div class="card card--plain plan-card">
-      <h3 class="muted title">CURRENT PLAN</h3>
-      <h4>Starter plan</h4>
-      <span>{{ 200000 | formatNumber }} transalations</span>
-      <span class="price">$ {{ 20 | formatNumber }}</span>
-      <span class="status active">Active</span>
+    <div class="grid">
+      <section>
+        <manage-api-tokens></manage-api-tokens>
+        <slide-input :value="threshold" label="Notification Threshold" name="threshold"></slide-input>
+      </section>
+      <section>
+        <h2 class="title">Current Plan</h2>
+        <div class="card card--plain plan-card">
+          <h4>Starter plan</h4>
+          <span>{{ 200000 | formatNumber }} transalations</span>
+          <span class="price">$ {{ 20 | formatNumber }}</span>
+          <span class="status active">Active</span>
+        </div>
+      </section>
     </div>
   </div>
 </template>
@@ -75,9 +82,5 @@ export default {
 
 .status.inactive {
   color: #b22222;
-}
-
-.title {
-  font-weight: 300;
 }
 </style>

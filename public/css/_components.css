@@ -153,5 +153,6 @@ a.button--dark.button--link:hover {
 .title {
   color: var(--black);
   font-size: 22px;
+  margin-bottom: 20px;
   font-weight: 500;
 }

@@ -1,24 +1,43 @@
 <template>
   <section class="billing-payment">
     <h2 class="title">Payment</h2>
-    <option-list
-      title="Payment Method"
-      description="Select how you would like to pay"
-      :options="paymentOptions"
-      v-model="selectedPaymentMethod"
-    />
-    <option-list
-      title="Plan"
-      description="Select the plan you would like to pay for"
-      :options="paymentPlans"
-      v-model="selectedPaymentPlan"
-    />
+    <div class="grid">
+      <section>
+        <option-list
+          title="Payment Method"
+          description="Select how you would like to pay"
+          :options="paymentOptions"
+          v-model="selectedPaymentMethod"
+        />
+      </section>
+      <section>
+        <option-list
+          title="Plan"
+          description="Select the plan you would like to pay for"
+          :options="paymentPlans"
+          v-model="selectedPaymentPlan"
+        />
+      </section>
+    </div>
     <h2 class="title">Card details</h2>
-    <input type="text" class="input" v-model="cardHolder.name" placeholder="Card holder's name" />
-    <div ref="card"></div>
-    <div ref="errors" role="alert"></div>
-    <img class="stripe-logo" :src="'/img/powered_by_stripe.svg'" alt="powered by strip" />
-    <button ref="button" class="button button--dark fullWidth" @click="checkout">Save payment method</button>
+    <div class="grid">
+      <section class="flex-v-center spaced">
+        <input
+          type="text"
+          class="input fullWidth"
+          v-model="cardHolder.name"
+          placeholder="Card holder's name"
+        />
+        <div ref="card"></div>
+        <div ref="errors" role="alert"></div>
+        <img class="stripe-logo" :src="'/img/powered_by_stripe.svg'" alt="powered by strip" />
+        <button
+          ref="button"
+          class="button button--dark fullWidth"
+          @click="checkout"
+        >Save payment method</button>
+      </section>
+    </div>
   </section>
 </template>
 
@@ -179,6 +198,7 @@ export default {
   -webkit-transition: box-shadow 150ms ease;
   transition: box-shadow 150ms ease;
   margin: 0;
+  width: 100%;
 }
 
 .StripeElement--focus {
