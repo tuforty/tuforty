@@ -3,6 +3,6 @@
 @section('content')
   <div id="home">
     <chart-usage></chart-usage>
-    <usage></usage>
+    <usage :user="{{ Auth::user() }}"></usage>
   </div>
 @endsection

@@ -1,10 +1,10 @@
 <template>
   <div id="api-key">
-    <h2 class="title">API Key</h2>
+    <h2 class="title">Credential</h2>
     <div class="card card--plain">
       <div class="api-key__container">
-        <p class="api-key" v-if="tokenVisible">ksjrbeirbuebubuebueuevyeveyvey</p>
-        <p class="api-key" v-else>***************</p>
+        <p class="api-key" v-if="tokenVisible">{{token}}</p>
+        <p class="api-key" v-else>***************************</p>
       </div>
       <div class="api-keys__actions">
         <button class="button button--link button--dark" @click="toggleToken">
@@ -15,7 +15,7 @@
         </button>
         <button
           class="button button--link button--dark"
-          v-clipboard:copy="message"
+          v-clipboard:copy="token"
           v-clipboard:success="onCopy"
           v-clipboard:error="onCopyError"
         >
@@ -31,10 +31,9 @@ export default {
   data() {
     return {
       loading: false,
-      token: null,
-      tokenVisible: true,
+      tokenVisible: false,
       error: null,
-      message: "Copy These Text"
+      token: ""
     };
   },
 
@@ -67,11 +66,11 @@ export default {
     },
 
     onCopy: function(e) {
-      alert("You just copied: " + e.text);
+      alert("Token copied to clipboard.");
     },
 
     onCopyError: function(e) {
-      alert("Failed to copy texts");
+      alert("Failed to copy token to clipboard.");
     }
   }
 };
@@ -89,7 +88,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  margin: 50px 0;
+  margin: 35px 0;
 }
 
 .api-keys__actions {

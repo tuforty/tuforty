@@ -2,7 +2,7 @@
   <section class="billing-payment">
     <h2 class="title">Payment</h2>
     <div class="grid">
-      <section>
+      <section v-if="hasOldCard">
         <option-list
           title="Payment Method"
           description="Select how you would like to pay"
@@ -14,8 +14,8 @@
         <option-list
           title="Plan"
           description="Select the plan you would like to pay for"
-          :options="paymentPlans"
-          v-model="selectedPaymentPlan"
+          :options="pricingPlans"
+          v-model="selectedPlan"
         />
       </section>
     </div>
@@ -31,63 +31,58 @@
         <div ref="card"></div>
         <div ref="errors" role="alert"></div>
         <img class="stripe-logo" :src="'/img/powered_by_stripe.svg'" alt="powered by strip" />
-        <button
-          ref="button"
-          class="button button--dark fullWidth"
-          @click="checkout"
-        >Save payment method</button>
+        <button ref="button" class="button button--dark fullWidth" @click="checkout">Purchase Quota</button>
       </section>
     </div>
   </section>
 </template>
 
 <script>
+import { ucFirst } from "../../utils/string";
+
 let stripe = Stripe(process.env.MIX_STRIPE_KEY),
   elements = stripe.elements(),
   card = undefined;
 
 export default {
-  props: ["intentSecret", "paymentMethods"],
-  data() {
-    return {
-      saveCard: true,
-      selectedPaymentMethod: "old-card",
-      selectedPaymentPlan: "starter",
-      selectedPlan: "MINI",
-      pricingPlans: [],
-      cardHolder: { name: "" },
-      paymentOptions: [
-        {
-          label: "Old card",
-          value: "old-card"
-        },
-        {
-          label: "New card",
-          value: "new-card"
-        }
-      ],
-      paymentPlans: [
-        {
-          label: "Starter",
-          description: "2,500 translations for $20",
-          value: "starter"
-        },
-        {
-          label: "Start up",
-          description: "2,500 translations for $20",
-          value: "large-teams"
-        }
-      ]
-    };
-  },
-
   mounted() {
     card = elements.create("card");
     card.mount(this.$refs.card);
     this.getAvailablePricingPlans();
   },
 
+  props: ["intentSecret", "paymentMethods"],
+
+  data() {
+    return {
+      saveCard: false,
+      selectedPaymentMethod: "old-card",
+      cardHolder: { name: "" },
+      hasOldCard: false,
+      paymentOptions: this.getPaymentOptions(),
+      selectedPlan: "",
+      pricingPlans: []
+    };
+  },
+
   methods: {
+    /**
+     * Check if the current user has an existing card saved.
+     */
+    getPaymentOptions() {
+      const options = [{ label: "New card", value: "new-card" }];
+
+      this.hasOldCard =
+        this.paymentMethods.length > 0 &&
+        Object.keys(this.paymentMethods[0]) > 0;
+
+      if (this.hasOldCard) {
+        options.push({ label: "New Card", value: "new-card" });
+      }
+
+      return options;
+    },
+
     /**
      * Checkout the payment info selected.
      */
@@ -97,7 +92,12 @@ export default {
           ? await this.setupSavableCard()
           : await this.setupUnsavableCard();
         await this.makePurchase(paymentMethod);
-      } catch (err) {}
+      } catch (err) {
+        console.error(err);
+        alert(
+          "An error occured while making payment. We'll look into it shortly."
+        );
+      }
     },
 
     /**
@@ -153,7 +153,8 @@ export default {
         });
         alert(data.message);
       } catch (err) {
-        alert("An error occured why charging the card.");
+        console.error(err);
+        alert("An error occured while charging the card.");
       }
     },
 
@@ -163,8 +164,22 @@ export default {
     async getAvailablePricingPlans() {
       try {
         const { data } = await axios.get("/api/pricing");
-        this.pricingPlans = data.data;
-      } catch (err) {}
+        const planNames = Object.keys(data.data);
+
+        this.selectedPlan = planNames[0];
+
+        this.pricingPlans = planNames.map(planName => {
+          const { price, quota, label } = data.data[planName];
+          return {
+            label,
+            value: planName,
+            description: `${quota} translations for $${quota / 100}`
+          };
+        });
+      } catch (err) {
+        console.error(err);
+        alert("Failed to fetch pricing plans");
+      }
     }
   }
 };

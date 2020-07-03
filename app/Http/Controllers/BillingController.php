@@ -23,6 +23,26 @@ class BillingController extends Controller
     }
 
     /**
+     * Get the current plan for a user.
+     * 
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function currentPlan(Request $request)
+    {
+        $user = $request->user();
+        $transaction = $user->transactions()->first();
+
+        $payload = [
+            'quota_left' => $user->quota_left,
+            'quota_last_purchased' => $user->quota_last_purchased,
+            'last_transaction' => $transaction
+        ];
+
+        return response()->ok('Plan fetched successfully.', $payload);
+    }
+
+    /**
      * Make a purchase for quota.
      *
      * @param MakePaymentRequest $request
@@ -58,8 +78,15 @@ class BillingController extends Controller
         bool $saveCard
     ) {
         try {
+            DB::beginTransaction();
             $charge = $user->chargeWithStripe($pricingPlan, $stripeRef, $saveCard);
             $user->creditWithQuota($pricingPlan->value['quota']);
+            $user->transactions()->create([
+                'plan_name' => $pricingPlan->key,
+                'plan_amount' => $pricingPlan->value['price'],
+                'quota_purchased' => $pricingPlan->value['quota']
+            ]);
+            DB::commit();
         } catch (StripeChargeFailed $err) {
             return response()->notModified($err->getMessage());
         } catch (StripeChargeFailed $err) {
@@ -69,6 +96,7 @@ class BillingController extends Controller
             return response()->internalServerError($err->getMessage());
         }
 
-        return response()->ok('Payment successfull.');
+        $payload = ['current_quota' => $user->quota_left];
+        return response()->ok('Payment successfull.', $payload);
     }
 }

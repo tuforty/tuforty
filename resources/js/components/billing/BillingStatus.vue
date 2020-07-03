@@ -1,19 +1,22 @@
 <template>
   <div class="billing-status">
-    <span class="balance">{{ 35000000 | formatNumber }}</span>
+    <span class="balance">{{ currentPlan.quota_left | formatNumber }}</span>
     <span class="muted text-center">BALANCE</span>
     <div class="grid">
       <section>
         <manage-api-tokens></manage-api-tokens>
-        <slide-input :value="threshold" label="Notification Threshold" name="threshold"></slide-input>
+        <!-- <slide-input :value="threshold" label="Notification Threshold" name="threshold"></slide-input> -->
       </section>
       <section>
         <h2 class="title">Current Plan</h2>
         <div class="card card--plain plan-card">
-          <h4>Starter plan</h4>
-          <span>{{ 200000 | formatNumber }} transalations</span>
-          <span class="price">$ {{ 20 | formatNumber }}</span>
-          <span class="status active">Active</span>
+          <h4>{{ currentPlan.last_transaction.plan_name | stripUnderscore }}</h4>
+          <span>{{ currentPlan.last_transaction.quota_purchased || 0 | formatNumber }} transalation(s)</span>
+          <span
+            class="price"
+          >$ {{ (currentPlan.last_transaction.plan_amount || 0 ) / 100 | formatNumber }}</span>
+          <span v-if="currentPlan.quota_left>0" class="status active">Active</span>
+          <span v-else class="status active">Active</span>
         </div>
       </section>
     </div>
@@ -21,14 +24,43 @@
 </template>
 
 <script>
+import { stripUnderscore } from "../../utils/string";
+
 export default {
+  created() {
+    this.getCurrentPlan();
+  },
+
   data: () => ({
-    threshold: 20
+    loading: false,
+    currentPlan: {
+      last_transaction: {}
+    }
   }),
+
   filters: {
+    stripUnderscore,
+
     formatNumber(number) {
       const formatter = Intl.NumberFormat("en-US");
       return formatter.format(number);
+    }
+  },
+
+  methods: {
+    /**
+     * Get the current plan of the user.
+     */
+    async getCurrentPlan() {
+      this.loading = true;
+      try {
+        const { data } = await axios.get("/api/billing/current-plan");
+        this.currentPlan = data.data;
+      } catch (error) {
+        this.error = error.message;
+      } finally {
+        this.loading = false;
+      }
     }
   }
 };

@@ -4,15 +4,15 @@
       <h2 class="title">Quota</h2>
       <div class="quota__item">
         <h3>
-          <ion-icon name="timer" size="large"></ion-icon>Used
+          <ion-icon name="hourglass" size="large"></ion-icon>Remaining
         </h3>
-        <span>{{ 200000 | formatNumber }}</span>
+        <span>{{ user.quota_left | formatNumber }}</span>
       </div>
       <div class="quota__item">
         <h3>
-          <ion-icon name="hourglass" size="large"></ion-icon>Remaining
+          <ion-icon name="timer" size="large"></ion-icon>Last Purchased
         </h3>
-        <span>{{ 200000 | formatNumber }}</span>
+        <span>{{ user.quota_last_purchased | formatNumber }}</span>
       </div>
     </div>
     <div class="card card--plain">
@@ -28,32 +28,25 @@
 
 <script>
 export default {
-  data() {
-    return {
-      usage: null,
-      type: "TRANSLATE_MONEY_TO_WORDS",
-      filterType: "LAST_7_DAYS",
-      tableData: {
-        headers: ["Code", "Language", "Total Translations"],
-        alignments: ["left", "left", "right"],
-        data: [
-          ["FR", "French", "20000"],
-          ["ESP", "Spanish", "20000"]
-        ]
-      }
-    };
-  },
-
-  filters: {
-    formatNumber(number) {
-      const formatter = Intl.NumberFormat("en-US");
-      return formatter.format(number);
-    }
-  },
+  props: ["user"],
 
   mounted() {
     this.getUsage();
   },
+
+  data: () => ({
+    usage: null,
+    type: "TRANSLATE_MONEY_TO_WORDS",
+    filterType: "LAST_7_DAYS",
+    tableData: {
+      headers: ["Code", "Language", "Total Translations"],
+      alignments: ["left", "left", "right"],
+      data: [
+        ["FR", "French", "20000"],
+        ["ESP", "Spanish", "20000"]
+      ]
+    }
+  }),
 
   methods: {
     async getUsage() {
@@ -62,6 +55,13 @@ export default {
         const { data } = await axios.get("/api/usage/analytics", { params });
         this.usage = data.data;
       } catch (err) {}
+    }
+  },
+
+  filters: {
+    formatNumber(number) {
+      const formatter = Intl.NumberFormat("en-US");
+      return formatter.format(number);
     }
   }
 };
