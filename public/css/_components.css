@@ -39,6 +39,7 @@ a.button:hover {
 
 .button--link,
 a.button--link {
+  cursor: pointer;
   background-color: transparent !important;
   width: fit-content;
   color: var(--blue);

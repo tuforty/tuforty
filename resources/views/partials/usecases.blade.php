@@ -7,7 +7,7 @@
     <section>
       <span class="number">1</span>
       <h3>Ecommerce</h3>
-      <p>Managing an ecommerce store that scales to various countries and regions, and requires communication prices to users in a simple and well defined way.</p>
+      <p>Managing an ecommerce store that scales to various countries and regions, requires communicating prices in languages users are used to.</p>
     </section>
     <section>
       <span class="number">2</span>
