@@ -7,7 +7,7 @@
       </p>
     </div>
     <ul class="landing__nav__links">
-      <li class="landing__nav__link"><a href="https://docs.tuforty.com/">Docs</a></li>
+      <li class="landing__nav__link"><a href="https://docs.tuforty.com/">Documentation</a></li>
       <li class="landing__nav__link"><a href="#pricing">Pricing</a></li>
       @auth
         <li class="landing__nav__link"><a href="/dashboard">Dashboard</a></li>
