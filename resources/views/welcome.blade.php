@@ -10,7 +10,9 @@
       languages, and make users feel home.
     </p>
     <button class="button button--dark button--round">
-      Get started
+      <a class="border" href="{{ route('register') }}">
+        Get started
+      </a>
     </button>
   </div>
   <div class="text-editor__container">

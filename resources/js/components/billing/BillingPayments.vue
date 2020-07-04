@@ -40,9 +40,12 @@
 <script>
 import { ucFirst } from "../../utils/string";
 
-let stripe = Stripe(process.env.MIX_STRIPE_KEY),
-  elements = stripe.elements(),
+let stripe, elements, card;
+if (window.Stripe != null) {
+  stripe = Stripe(process.env.MIX_STRIPE_KEY);
+  elements = stripe.elements();
   card = undefined;
+}
 
 export default {
   mounted() {
