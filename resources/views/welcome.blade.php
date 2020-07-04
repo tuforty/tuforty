@@ -19,13 +19,20 @@
     <div class="text-editor__icon resize"></div>
     <pre class="text-editor">
       <code class="language-bash">
+curl -L -X GET 'https://tuforty.com/v1/api/translator/money' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: Bearer { TURFORTY_API_KEY }' \
+-d '{"value": 345.345, "language": "fr", "whole_unit": "dollars", "decimal_unit": "cent"}'
 
-
-curl --header "Content-Type: application/json" \
-    --request POST \
-    --data '{"value":"10000","language":"fr", decimal_unit: "cents"}' \
-    https://api.tuforty.com/v1/translator/money
-      </code>
+# Response
+{
+  "language": "fr",
+  "decimal_unit": "cent", 
+  "whole_unit": "dollars", 
+  "decimal_translation": "trente cinq"
+  "whole_translation": "Trois cent quarante cinq",
+  "translation": "trois cent quarante-cinq dollars, trente-cinq cents seulement"
+}</code>
     </pre>
   </div>
 </main>

@@ -139,14 +139,15 @@
   font-size: 12px;
   border-radius: 20px;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-  height: 250px;
+  height: 380px;
 }
 
 .text-editor code {
-  font-size: 0.8em !important;
+  font-size: 0.7em !important;
 }
 
 .text-editor__container {
+  margin-left: 30px;
   position: relative;
 }
 
@@ -225,7 +226,7 @@
 
 #features {
   width: 100%;
-  padding: 0 5vw;
+  padding: 100px 5vw;
   margin: auto;
   box-sizing: border-box;
 }
