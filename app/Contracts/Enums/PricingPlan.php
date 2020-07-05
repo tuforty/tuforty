@@ -9,13 +9,21 @@ use BenSampo\Enum\Enum;
  */
 class PricingPlan extends Enum
 {
-    const MINI = [
-        'price' => 500, // Cents
-        'quota' => 1000
+    const STARTER = [
+        'price' => 20000, // Cents
+        'quota' => 2500,
+        'label' => 'Starter'
     ];
 
-    const MAX = [
-        'price' => 500, // Cents
-        'quota' => 1000
+    const STARTUP = [
+        'price' => 60000, // Cents
+        'quota' => 20000,
+        'label' => 'Startup'
+    ];
+
+    const LARGE_TEAMS = [
+        'price' => 300000, // Cents
+        'quota' => 200000,
+        'label' => 'Large Teams'
     ];
 }

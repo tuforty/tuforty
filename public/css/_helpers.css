@@ -1,0 +1,25 @@
+.muted {
+  color: var(--grey);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-success {
+  color: #64d359;
+}
+
+.text-danger {
+  color: #b22222;
+}
+
+.flex-v-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.spaced > * {
+  margin: 8px 0;
+}
