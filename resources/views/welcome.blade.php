@@ -9,12 +9,33 @@
       Easily support translation for money values in over 50 indigienious
       languages, and make users feel home.
     </p>
-    <button class="button button--dark">
-      Start Free Trial
+    <button class="button button--dark button--round">
+      <a class="border" href="{{ route('register') }}">
+        Get started
+      </a>
     </button>
   </div>
-  <lottie-player
-  src="https://assets10.lottiefiles.com/packages/lf20_b1cGf4.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop autoplay >
-  </lottie-player>
+  <div class="text-editor__container">
+    <div class="text-editor__icon close"></div>
+    <div class="text-editor__icon minimize"></div>
+    <div class="text-editor__icon resize"></div>
+    <pre class="text-editor">
+      <code class="language-bash">
+curl -L -X GET 'https://tuforty.com/v1/api/translator/money' \
+-H 'Content-Type: application/json' \
+-H 'Authorization: Bearer { TURFORTY_API_KEY }' \
+-d '{"value": 345.345, "language": "fr", "whole_unit": "dollars", "decimal_unit": "cent"}'
+
+# Response
+{
+  "language": "fr",
+  "decimal_unit": "cent", 
+  "whole_unit": "dollars", 
+  "decimal_translation": "trente cinq"
+  "whole_translation": "Trois cent quarante cinq",
+  "translation": "trois cent quarante-cinq dollars, trente-cinq cents seulement"
+}</code>
+    </pre>
+  </div>
 </main>
 @endsection

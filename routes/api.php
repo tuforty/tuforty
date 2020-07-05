@@ -30,6 +30,11 @@ Route::get('pricing', 'PricingController@index');
 Route::post('billing/purchase', 'BillingController@purchaseQuota');
 
 /**
+ * Billing API
+ */
+Route::get('billing/current-plan', 'BillingController@currentPlan');
+
+/**
  * Usage Analytics
  */
 Route::get('usage/analytics', 'UsageController@index');

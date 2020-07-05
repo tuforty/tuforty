@@ -7,17 +7,14 @@
       </p>
     </div>
     <ul class="landing__nav__links">
+      <li class="landing__nav__link"><a href="https://docs.tuforty.com/">Documentation</a></li>
+      <li class="landing__nav__link"><a href="#pricing">Pricing</a></li>
       @auth
-        <li class="landing__nav__link">{{ Auth::user()->name }}</li>
-        <li class="landing__nav__link blue"><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();>Logout</a></li>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-          @csrf
-        </form>
+        <li class="landing__nav__link"><a href="/dashboard">Dashboard</a></li>
       @else
-        <li class="landing__nav__link"><a>Documentaion</a></li>
         <li class="landing__nav__link"><a href="{{ route('login') }}">Login</a></li>
         @if (Route::has('register'))
-          <li class="landing__nav__link"><a class="blue" href="{{ route('register') }}">Free Trial</a></li>
+          <li class="landing__nav__link"><a class="border" href="{{ route('register') }}">Get started</a></li>
         @endif
       @endauth
     </ul>

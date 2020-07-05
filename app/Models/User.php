@@ -57,6 +57,16 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
     }
 
     /**
+     * Get the transaction history for a user.
+     *
+     * @return \App\Models\Usage
+     */
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
+    /**
      * Check if a user still has quota remaining.
      *
      * @return boolean
