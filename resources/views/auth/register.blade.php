@@ -1,7 +1,7 @@
-@extends('layouts.auth.register')
+@extends('layouts.auth')
 
 @section('content')
-<form class="register__form" method="POST" action="{{ route('register') }}">
+<form class="login__form" method="POST" action="{{ route('register') }}">
   <a class="button button--link button--dark" href="/">
     &larr; Back
   </a>
