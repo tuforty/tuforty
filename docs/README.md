@@ -13,7 +13,6 @@ This documentation comprises everything you'll require to get started with trans
   * [Money translation](money-translation/money-translate-to-sentence/)
 * Billing
   * [Manage Quota](billing/manage-quota.md)
-  * [Renewing Subscription]()
 * Miscellaneous
   * [Frequently Asked Questions](miscellaneous/faqs.md)
   * [What's next?](miscellaneous/whats-next.md)
