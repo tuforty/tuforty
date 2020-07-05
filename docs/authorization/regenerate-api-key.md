@@ -10,6 +10,10 @@ Generating a new API key is something that can easily be done via the dashboard 
 **Notice:** Do note that once you regenerate an API key, you automatically revoke the previous key. Hence, it's important that you manually update all existing environments where the previous key was utilized. 
 {% endhint %}
 
+{% hint style="info" %}
+See [Authorization](./) on how to use the API keys.
+{% endhint %}
+
 #### Step 1:
 
 Login to your dashboard.

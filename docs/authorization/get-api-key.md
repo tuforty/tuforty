@@ -10,6 +10,10 @@ On signup, every user is automatically assigned a unique API key, which can easi
 **Security**: API keys are expected to be kept securely. If for any circumstance you suspect any case of key theft, simply [regenerate a new key](regenerate-api-key.md).
 {% endhint %}
 
+{% hint style="info" %}
+See [Authorization](./) on how to use the API keys.
+{% endhint %}
+
 #### Step 1:
 
 Login to your dashboard.
@@ -29,4 +33,8 @@ Click the eye icon \(👁\) located beside your current key.
 ![](../.gitbook/assets/screen-shot-2020-07-05-at-4.47.25-pm.png)
 
 That is all.
+
+
+
+
 
