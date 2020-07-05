@@ -16,14 +16,12 @@ class CreateUsagesTable extends Migration
     {
         Schema::create('usages', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id')
-                ->foreign('user_id')
-                ->references('id')
-                ->on('users');
-
+            $table->unsignedBigInteger('user_id');
             $table->enum('type', UsageType::getValues())->index();
             $table->integer('quota_used')->default(1);
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

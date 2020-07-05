@@ -61,7 +61,7 @@ class UsageController extends Controller
                 return $item[$dateColumn]->format('d-m-Y');
             });
 
-        return static::squashTrendsForDate($usage, $metricColumn, $dateColumn);
+        return static::squashTrendsForDate($usage, $metricColumn);
     }
 
     /**
@@ -70,15 +70,14 @@ class UsageController extends Controller
      *
      * @param Collection $usages
      * @param string $fieldToSumUp
-     * @param string $dateColumn
      * @return array
      */
-    private static function squashTrendsForDate($usage, $fieldToSumUp, $dateColumn = 'updated_at')
+    private static function squashTrendsForDate($usage, $fieldToSumUp)
     {
         return $usage->transform(
-            function ($values, $date) use ($fieldToSumUp, $dateColumn) {
+            function ($values, $date) use ($fieldToSumUp) {
                 $$fieldToSumUp = $values->sum($fieldToSumUp);
-                return array_merge(compact($dateColumn, $fieldToSumUp));
+                return array_merge(compact('date', $fieldToSumUp));
             }
         );
     }

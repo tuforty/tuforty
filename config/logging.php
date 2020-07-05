@@ -71,6 +71,17 @@ return [
             ],
         ],
 
+        'logdna' => [
+            'driver' => 'monolog',
+            'level' => 'debug',
+            'handler' => \Zwijn\Monolog\Handler\LogdnaHandler::class,
+            'handler_with' => [
+                'ingestion_key' => env('LOGDNA_KEY'),
+                'hostname' => 'tuforty',
+            ],
+            'formatter' => 'default',
+        ],
+
         'stderr' => [
             'driver' => 'monolog',
             'handler' => StreamHandler::class,
