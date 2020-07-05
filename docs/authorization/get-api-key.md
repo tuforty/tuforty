@@ -14,21 +14,19 @@ On signup, every user is automatically assigned a unique API key, which can easi
 
 Login to your dashboard.
 
-
+![](../.gitbook/assets/screen-shot-2020-07-05-at-4.52.43-pm.png)
 
 #### Step 2:
 
-Switch to the **API Keys** tab on your dashboard.
+Switch to the **Manage** tab on your dashboard.
 
-
+![](../.gitbook/assets/screen-shot-2020-07-05-at-4.46.08-pm.png)
 
 #### Step 3:
 
-Click the regenerate icon \(♻\) located beside your current key.
+Click the eye icon \(👁\) located beside your current key.
 
+![](../.gitbook/assets/screen-shot-2020-07-05-at-4.47.25-pm.png)
 
-
-#### Step 4:
-
-Voila!!! That's all.
+That is all.
 

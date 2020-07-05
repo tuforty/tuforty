@@ -2,7 +2,7 @@
 description: Steps on how to generate a new API key.
 ---
 
-# Regenerate API Key
+# ♻️ Regenerate API Key
 
 Generating a new API key is something that can easily be done via the dashboard in a few steps. The steps have been outlined below:
 
@@ -14,21 +14,19 @@ Generating a new API key is something that can easily be done via the dashboard 
 
 Login to your dashboard.
 
-
+![](../.gitbook/assets/screen-shot-2020-07-05-at-4.52.43-pm.png)
 
 #### Step 2:
 
-Switch to the **API Keys** tab on your dashboard.
+Switch to the **Manage** tab on your dashboard.
 
-
+![](../.gitbook/assets/screen-shot-2020-07-05-at-4.46.08-pm.png)
 
 #### Step 3:
 
 Click the regenerate icon \(♻\) located beside your current key.
 
+![](../.gitbook/assets/screen-shot-2020-07-05-at-4.47.25-pm%20%281%29.png)
 
-
-#### Step 4:
-
-Voila!!! That's all.
+That's all.
 

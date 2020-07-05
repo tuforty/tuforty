@@ -10,7 +10,7 @@ This authorization scheme leverages on the API token scheme, which specifies inc
 
 The format is**`Authorization: Bearer {YOUR_API_TOKEN}`**.
 
-Check [example](money-translation/money-translate-to-sentence/#sample-api-request) for a request requiring authorization.
+Check [example](../money-translation/money-translate-to-sentence/#sample-api-request) for a request requiring authorization.
 
 
 

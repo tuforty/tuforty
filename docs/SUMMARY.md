@@ -2,20 +2,18 @@
 
 * [🚀 Getting Started](README.md)
 * [🌍 Supported Languages](supported-languages.md)
-* [🔑 Getting Your API Key](get-api-key/README.md)
-  * [Regenerate API Key](get-api-key/regenerate-api-key.md)
-* [🔐 Authorization](authorization.md)
+* [🔐 Authorization](authorization/README.md)
+  * [🔑 Getting Your API Key](authorization/get-api-key.md)
+  * [♻️ Regenerate API Key](authorization/regenerate-api-key.md)
 
 ## 📜 Money Translation
 
-* [Into Localized Sentence](money-translation/money-translate-to-sentence/README.md)
+* [Localized Sentence](money-translation/money-translate-to-sentence/README.md)
   * [Customizing Translation](money-translation/money-translate-to-sentence/customizing-translation.md)
 
 ## 💰Billing
 
-* [Manage Quota](billing/manage-quota/README.md)
-  * [Setting Quota Threshold](billing/manage-quota/setting-quota-threshold.md)
-* [Renew Subscription](billing/renew-subscription.md)
+* [Manage Quota](billing/manage-quota.md)
 * [Purchase Quota](https://tuforty.com/pricing)
 
 ## 🗞 Miscellaneous

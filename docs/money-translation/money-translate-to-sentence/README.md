@@ -2,7 +2,7 @@
 description: Translate monetary values into equivalent localized sentence.
 ---
 
-# Into Localized Sentence
+# Localized Sentence
 
 Any numeric value signifying an amount of money can easily be translated to the sentence equivalent in any _language of choice_.
 
