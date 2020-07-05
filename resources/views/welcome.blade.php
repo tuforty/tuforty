@@ -1,22 +1,20 @@
-@extends('layouts.app')
-
-@section('meta-tags')
-    <!-- Your Meta Tags Here-->
-@endsection
-
+@extends('layouts.landing')
 @section('content')
-    <section class="hero is-primary is-bold is-fullheight">
-        <div class="hero-body">
-            <div class="container">
-                <h1 class="title has-text-centered">
-                    <a href="#" class="button">
-                        Dummy Button
-                    </a>
-                    <a href="#" class="button">
-                        Smart Button
-                    </a>
-                </h1>
-            </div>
-        </div>
-    </section>
+<main class="landing__hero">
+  <div>
+    <h1>
+      Concise money <br> translation to words
+    </h1>
+    <p>
+      Easily support translation for money values in over 50 indigienious
+      languages, and make users feel home.
+    </p>
+    <button class="button button--dark">
+      Start Free Trial
+    </button>
+  </div>
+  <lottie-player
+  src="https://assets10.lottiefiles.com/packages/lf20_b1cGf4.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop autoplay >
+  </lottie-player>
+</main>
 @endsection

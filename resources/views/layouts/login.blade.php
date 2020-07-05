@@ -1,7 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    @include('shared.analytics')
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -11,27 +10,19 @@
     <!-- Custom Meta Tags -->
     @yield('meta-tags')
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Tuforti') }}</title>
 
     <!-- Scripts -->
-    <script src="https://js.stripe.com/v3/"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway:500,500i,700,700i|Roboto+Slab:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
 
     <!-- Styles -->
     <link href="{{ asset('css/reset.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     @include('shared.drift')
 </head>
 <body>
-    <div id="app">
-        @include('shared.navbar')
-        @yield('content')
-        @include('shared.footer')
+    <div class="login">
+      @yield('content')
     </div>
 
 <!-- Scripts -->

@@ -1,16 +1,25 @@
-{{-- @component('emails::message') --}}
-# Quota Exeeded
+@component('emails.templates.html.message')
+# Quota Threshold Exeeded
 
-Hello {{ $user->name }},
+Hello {{ ucwords($user->name) }},
 
-This is just to let you knw that you've reached the quote of {{ $user->quota_threshold }} % placed on your account.
+We would like to let you know that you've crossed the quota 
+threshold of **{{ $user->quota_threshold }}%** placed on
+your account. 
 
-Kindly click the `Renew Button` below to renew:
+Your service with us will still continue operating as normal, 
+pending when your current quota is exhausted.
 
-{{-- @component('emails::button', ['url' => route('billing', ['threshold' => true])]) --}}
+Would you like to purchase extra quota?
 
-{{-- @endcomponent --}}
+@component('emails.templates.html.button', [
+    'url' => route('billing', ['threshold' => true]),
+])
+    💰Purchase Extra Quota
+@endcomponent
 
-Thanks,<br>
-{{ config('app.name') }}
-{{-- @endcomponent --}}
+Best Wishes,
+
+**Tochukwu**,<br>
+*{{ config('app.name') }}*.
+@endcomponent
