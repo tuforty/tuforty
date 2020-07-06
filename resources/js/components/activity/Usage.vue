@@ -2,26 +2,23 @@
   <div class="activity">
     <div class="card card--plain">
       <h2 class="title">Quota</h2>
-      <div class="quota__item">
-        <h3>
-          <ion-icon name="hourglass" size="large"></ion-icon>Remaining
-        </h3>
-        <span>{{ user.quota_left | formatNumber }}</span>
+      <div class="activity__quota">
+        <div class="activity__quota__icon">
+          <ion-icon name="hourglass" size="large"></ion-icon>
+          <br />
+          <label for="quota-left">Remaining</label>
+        </div>
+        <div class="activity__quota__icon">
+          <ion-icon name="wallet" size="large"></ion-icon>
+          <br />
+          <label for="quota-last-purchased">Last Purchased</label>
+        </div>
+        <span class="activity__quota__number" id="quota-left">{{ user.quota_left | formatNumber }}</span>
+        <span
+          class="activity__quota__number"
+          for="quota-last-purchased"
+        >{{ user.quota_last_purchased | formatNumber }}</span>
       </div>
-      <div class="quota__item">
-        <h3>
-          <ion-icon name="timer" size="large"></ion-icon>Last Purchased
-        </h3>
-        <span>{{ user.quota_last_purchased | formatNumber }}</span>
-      </div>
-    </div>
-    <div class="card card--plain">
-      <h2 class="title">Translations</h2>
-      <data-table
-        :headers="tableData.headers"
-        :alignments="tableData.alignments"
-        :data="tableData.data"
-      />
     </div>
   </div>
 </template>
@@ -37,15 +34,7 @@ export default {
   data: () => ({
     usage: null,
     type: "TRANSLATE_MONEY_TO_WORDS",
-    filterType: "LAST_7_DAYS",
-    tableData: {
-      headers: ["Code", "Language", "Total Translations"],
-      alignments: ["left", "left", "right"],
-      data: [
-        ["FR", "French", "20000"],
-        ["ESP", "Spanish", "20000"]
-      ]
-    }
+    filterType: "LAST_7_DAYS"
   }),
 
   methods: {
@@ -69,17 +58,7 @@ export default {
 
 <style>
 .activity {
-  display: grid;
-  grid-column-gap: 30px;
-  grid-template-columns: repeat(2, 1fr);
   margin-top: 20px;
-}
-
-@media only screen and (max-width: 1080px) {
-  .activity {
-    grid-template-columns: 1fr;
-    grid-auto-flow: row;
-  }
 }
 
 .activity .card {
@@ -91,27 +70,30 @@ export default {
   margin: 20px 0;
 }
 
-.quota__item {
-  display: flex;
+.activity__quota {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-gap: 30px;
   align-items: center;
-  justify-content: space-between;
-  font-weight: 500;
-  margin: 30px 0;
+  justify-items: center;
+  height: 70%;
 }
 
-.quota__item h3 {
+.activity__quota__icon {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
-.quota__item h3 * {
-  margin: 5px;
-}
-.quota__item h3 ion-icon {
+
+.activity__quota ion-icon {
   color: var(--blue);
+  justify-items: center;
 }
 
-.quota__item span {
-  font-size: 20px;
+.activity__quota .activity__quota__number {
+  font-size: 2rem;
   color: var(--blue);
 }
 </style>

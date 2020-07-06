@@ -4,7 +4,12 @@
     <span class="text-success usage__percentage">
       <!-- <ion-icon name="arrow-up"></ion-icon>22.9% -->
     </span>
-    <apexchart type="line" :options="chartOptions" :series="series" height="300"></apexchart>
+    <apexchart
+      type="line"
+      :options="chartOptions"
+      :series="series"
+      height="300"
+    ></apexchart>
     <peroid-switcher
       name="peroid"
       @change="getUsageHistory"
@@ -98,7 +103,7 @@ export default {
         this.formatusageHistory(data.data);
       } catch (err) {
         console.error(err);
-        alert("An error occured while fetching usages data.");
+        this.$toast.error("An error occured while fetching usages data.");
       }
     },
 
