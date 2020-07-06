@@ -10,20 +10,20 @@ use BenSampo\Enum\Enum;
 class PricingPlan extends Enum
 {
     const STARTER = [
-        'price' => 20000, // Cents
-        'quota' => 2500,
+        'price' => 2000, // Cents
+        'quota' => 25000,
         'label' => 'Starter'
     ];
 
     const STARTUP = [
-        'price' => 60000, // Cents
-        'quota' => 20000,
+        'price' => 6000, // Cents
+        'quota' => 200000,
         'label' => 'Startup'
     ];
 
     const LARGE_TEAMS = [
         'price' => 300000, // Cents
-        'quota' => 200000,
+        'quota' => 2000000,
         'label' => 'Large Teams'
     ];
 }

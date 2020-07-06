@@ -10,24 +10,36 @@
       <div class="header">
         <h2>Starter</h2>
       </div>
-      <span class="price">$20<sub>/month</sub></span>
-      <p> 2,500 translations</p>
+      <span class="price">$20<sub></sub></span>
+      <p>
+        25,000 translations<br>
+        60+ languages<br>
+        No expiry<br>
+      </p>
       <a class="button" href="{{ route('register') }}">Sign up</a>
     </div>
     <div class="pricing-card">
       <div class="header">
         <h2>Startup</h2>
       </div>
-      <span class="price">$60<sub>/month</sub></span>
-      <p> 20,000 translations</p>
+      <span class="price">$60<sub></sub></span>
+      <p>
+        200,000 translations<br>
+        60+ languages<br>
+        No expiry<br>
+      </p>
       <a class="button" href="{{ route('register') }}">Sign up</a>
     </div>
     <div class="pricing-card special">
       <div class="header">
         <h2>Large teams</h2>
       </div>
-      <span class="price">$300<sub>/month</sub></span>
-      <p> 200,000 translations</p>
+      <span class="price">$300<sub></sub></span>
+      <p>
+        2 Million translations<br>
+        60+ languages<br>
+        No expiry<br>
+      </p>
       <a class="button button--dark" href="{{ route('register') }}">Sign up</a>
     </div>
   </section>
