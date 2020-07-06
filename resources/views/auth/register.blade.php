@@ -45,6 +45,5 @@
     Have an account ?
   </a>
 </form>
-<div class="register__illustration">
 </div>
 @endsection

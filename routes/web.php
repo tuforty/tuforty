@@ -21,15 +21,17 @@ Route::view('/', 'welcome');
  */
 Auth::routes(['verify' => true]);
 
-// Route::group
-/**
- * Dashboard
- */
-Route::get('/dashboard', 'DashboardController@index')->name('dashbord');
 
-/**
- * Dashboard > Management
- *
- * TODO: Bring this page to the dashboard controller method.
- */
-Route::get('/dashboard/management', 'DashboardController@management')->name('management');
+Route::middleware(['verified'])->group(function () {
+    /**
+     * Dashboard
+     */
+    Route::get('/dashboard', 'DashboardController@index')->name('dashbord');
+
+    /**
+     * Dashboard > Management
+     *
+     * TODO: Bring this page to the dashboard controller method.
+     */
+    Route::get('/dashboard/management', 'DashboardController@management')->name('management');
+});

@@ -1,28 +1,34 @@
 @extends('layouts.auth')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+<form class="login__form" method="GET" action="{{ route('verification.resend') }}">
+    @csrf
 
-                <div class="card-body">
-                    @if (session('resent'))
-                    <div class="alert alert-success" role="alert">
-                        {{ __('A fresh verification link has been sent to your email address.') }}
-                    </div>
-                    @endif
+    <a class="button button--link button--dark" href="/">
+        &larr; Back
+    </a>
 
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
-                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
-                        @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
-                    </form>
-                </div>
-            </div>
-        </div>
+    <h1>{{ __('Verify Your Email Address') }}</h1>
+
+    <div>
+
+        <p>
+            Before proceeding, please check your email for a verification link.
+            <br><br>
+            If you did not receive the email, click the button below.
+        </p>
     </div>
-</div>
+
+    <br>
+    <button type="submit" class="button button--round button--dark fullWidth">
+        {{ __('Resend Verification') }}
+    </button>
+
+    @if (session('resent'))
+    <br>
+    <span class="input__info-message text-center" role="alert">
+        {{ __('Verification link sent successfully.') }}
+    </span>
+    @endif
+</form>
 @endsection
