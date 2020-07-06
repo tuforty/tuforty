@@ -8,10 +8,7 @@
   justify-content: center;
   padding: 20px;
   box-sizing: border-box;
-  background-image: url("../img/security.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  background: url("../img/pattern-bg.png");
 }
 
 .login > * {
@@ -66,9 +63,6 @@
 
 .register__illustration {
   background-image: url("../img/security.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 95% center;
   height: 100%;
   width: 100%;
   min-width: 100%;
