@@ -21,7 +21,7 @@
     </div>
     <h2 class="title">Card details</h2>
     <div class="grid">
-      <section class="flex-v-center spaced">
+      <section id="stripe-form" class="flex-v-center spaced">
         <input
           type="text"
           class="input fullWidth"
@@ -30,8 +30,18 @@
         />
         <div ref="card"></div>
         <div ref="errors" role="alert"></div>
-        <img class="stripe-logo" :src="'/img/powered_by_stripe.svg'" alt="powered by strip" />
-        <button ref="button" class="button button--dark fullWidth" @click="checkout">Purchase Quota</button>
+        <img
+          class="stripe-logo"
+          :src="'/img/powered_by_stripe.svg'"
+          alt="powered by strip"
+        />
+        <button
+          ref="button"
+          class="button button--dark fullWidth"
+          @click="checkout"
+        >
+          Purchase Quota
+        </button>
       </section>
     </div>
   </section>
@@ -39,6 +49,7 @@
 
 <script>
 import { ucFirst } from "../../utils/string";
+import { EventBus } from "../../utils/event";
 
 let stripe, elements, card;
 if (window.Stripe != null) {
@@ -95,10 +106,12 @@ export default {
           ? await this.setupSavableCard()
           : await this.setupUnsavableCard();
         await this.makePurchase(paymentMethod);
+        EventBus.$emit("purchase-made");
       } catch (err) {
         console.error(err);
-        alert(
-          "An error occured while making payment. We'll look into it shortly."
+        this.$toasted.show(
+          "An error occured while making payment. We'll look into it shortly.",
+          { type: "error" }
         );
       }
     },
@@ -154,10 +167,12 @@ export default {
           stripe_payment_intent: paymentMethod,
           product_id: this.selectedPlan
         });
-        alert(data.message);
+        this.$toasted.show(data.message, { type: "success" });
       } catch (err) {
         console.error(err);
-        alert("An error occured while charging the card.");
+        this.$toasted.show("An error occured while charging the card.", {
+          type: "error"
+        });
       }
     },
 
@@ -181,7 +196,7 @@ export default {
         });
       } catch (err) {
         console.error(err);
-        alert("Failed to fetch pricing plans");
+        this.$toasted.show("Failed to fetch pricing plans", { type: "error" });
       }
     }
   }

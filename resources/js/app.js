@@ -69,6 +69,8 @@ Vue.component(
   require("./components/common/ErrorMessage.vue").default
 );
 
+Vue.use(window.Toasted);
+
 Vue.use(window.VueClipboard);
 
 Vue.use(window.VueApexCharts);

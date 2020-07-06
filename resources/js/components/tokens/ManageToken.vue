@@ -3,12 +3,15 @@
     <h2 class="title">Credential</h2>
     <div class="card card--plain">
       <div class="api-key__container">
-        <p class="api-key" v-if="tokenVisible">{{token}}</p>
+        <p class="api-key" v-if="tokenVisible">{{ token }}</p>
         <p class="api-key" v-else>***************************</p>
       </div>
       <div class="api-keys__actions">
         <button class="button button--link button--dark" @click="toggleToken">
-          <ion-icon :name="tokenVisible ? 'eye-off': 'eye'" size="large"></ion-icon>
+          <ion-icon
+            :name="tokenVisible ? 'eye-off' : 'eye'"
+            size="large"
+          ></ion-icon>
         </button>
         <button class="button button--link button--dark" @click="refreshToken">
           <ion-icon name="refresh" size="large"></ion-icon>
@@ -66,19 +69,33 @@ export default {
     },
 
     onCopy: function(e) {
-      alert("Token copied to clipboard.");
+      this.$toasted.show("Token copied to clipboard.");
     },
 
     onCopyError: function(e) {
-      alert("Failed to copy token to clipboard.");
+      this.$toasted.show("Failed to copy token to clipboard.", {
+        type: "error"
+      });
     }
   }
 };
 </script>
 
 <style scoped>
+#api-key {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#api-key .card {
+  flex: 1;
+}
+
 .api-key {
-  font-size: 18px;
+  font-size: 12px;
   letter-spacing: 2px;
   text-align: center;
   color: var(--blue);
