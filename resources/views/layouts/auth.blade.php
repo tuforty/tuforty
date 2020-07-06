@@ -10,7 +10,7 @@
     <!-- Custom Meta Tags -->
     @yield('meta-tags')
 
-    <title>{{ config('app.name', 'Tuforti') }}</title>
+    <title>{{ config('app.name', 'Tuforty') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

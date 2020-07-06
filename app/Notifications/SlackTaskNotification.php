@@ -44,7 +44,7 @@ class SlackTaskNotification extends Notification implements ShouldQueue
     public function toSlack($notifiable)
     {
         return (new SlackMessage)
-            ->from('Tuforti Job Evangelist', ':ghost:') // TODO: Fix this
+            ->from('Tuforty Job Man', ':ghost:') // TODO: Fix this
             ->to('#general')
             ->success()
             ->content($this->task->plainContent());

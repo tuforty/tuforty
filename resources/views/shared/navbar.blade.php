@@ -3,7 +3,7 @@
     <div class="landing__nav__icon ">
       <img src="{{ asset('img/logo.svg') }}" alt="Logo" width="50" height="50">
       <p>
-        {{ env('APP_NAME', 'Tuforti') }}
+        {{ env('APP_NAME', 'Tuforty') }}
       </p>
     </div>
     <ul class="landing__nav__links">

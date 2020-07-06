@@ -130,7 +130,7 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
     {
         try {
             $selectedPlan = $plan->value;
-            $description = "Payment for Tuforti Credits";
+            $description = "Payment for Tuforty Credits";
             $this->invoiceFor($description, $selectedPlan['price']);
         } catch (Exception $e) {
             // Do nothing, as invoice will keep retrying till sent.

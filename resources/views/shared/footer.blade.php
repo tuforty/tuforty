@@ -6,6 +6,6 @@
       <li><a href="https://legals.tuforty.com/privacy">Privacy Policy</a></li>
       <li><a href="https://docs.tuforty.com">Documentation</a></li>
     </ul>
-    <p class="copy">&copy; Tuforti</span> {{ date("Y") }}</p>
+    <p class="copy">&copy; Tuforty</span> {{ date("Y") }}</p>
   </div>
 </footer>
