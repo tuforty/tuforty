@@ -21,7 +21,7 @@
     <div class="text-editor__icon resize"></div>
     <pre class="text-editor">
       <code class="language-bash">
-curl -L -X GET 'https://tuforty.com/v1/api/translator/money' \
+curl -L -X GET 'https://tuforty.com/api/v1/translator/money' \
 -H 'Content-Type: application/json' \
 -H 'Authorization: Bearer { TURFORTY_API_KEY }' \
 -d '{"value": 345.345, "language": "fr", "whole_unit": "dollars", "decimal_unit": "cent"}'

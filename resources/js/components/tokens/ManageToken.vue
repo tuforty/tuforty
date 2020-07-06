@@ -49,7 +49,7 @@ export default {
     async getToken() {
       this.loading = true;
       try {
-        const { data } = await axios.get("/api/token");
+        const { data } = await axios.get("/api/v1/token");
         this.token = data.token || "";
       } catch (error) {
         this.error = error.message;
@@ -60,7 +60,7 @@ export default {
 
     async refreshToken() {
       this.loading = true;
-      const { data } = await axios.get("/api/token/refresh");
+      const { data } = await axios.get("/api/v1/token/refresh");
       this.token = data.token;
       this.loading = false;
     },

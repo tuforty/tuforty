@@ -54,7 +54,7 @@ export default {
     async getCurrentPlan() {
       this.loading = true;
       try {
-        const { data } = await axios.get("/api/billing/current-plan");
+        const { data } = await axios.get("/api/v1/billing/current-plan");
         this.currentPlan = data.data;
       } catch (error) {
         this.error = error.message;

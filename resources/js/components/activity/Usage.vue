@@ -52,7 +52,7 @@ export default {
     async getUsage() {
       try {
         const params = { type: this.type, filter_type: this.filterType };
-        const { data } = await axios.get("/api/usage/analytics", { params });
+        const { data } = await axios.get("/api/v1/usage/analytics", { params });
         this.usage = data.data;
       } catch (err) {}
     }

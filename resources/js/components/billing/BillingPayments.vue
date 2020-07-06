@@ -149,7 +149,7 @@ export default {
      */
     async makePurchase(paymentMethod) {
       try {
-        const { data } = await axios.post("/api/billing/purchase", {
+        const { data } = await axios.post("/api/v1/billing/purchase", {
           save_card: this.saveCard,
           stripe_payment_intent: paymentMethod,
           product_id: this.selectedPlan
@@ -166,7 +166,7 @@ export default {
      */
     async getAvailablePricingPlans() {
       try {
-        const { data } = await axios.get("/api/pricing");
+        const { data } = await axios.get("/api/v1/pricing");
         const planNames = Object.keys(data.data);
 
         this.selectedPlan = planNames[0];

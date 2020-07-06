@@ -89,7 +89,7 @@ export default {
      */
     async getUsageHistory() {
       try {
-        const { data } = await axios.get("/api/usage/analytics", {
+        const { data } = await axios.get("/api/v1/usage/analytics", {
           params: {
             type: "TRANSLATE_MONEY_TO_WORDS",
             filter_type: this.selectedTimeFrame
