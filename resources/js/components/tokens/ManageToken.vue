@@ -9,10 +9,7 @@
       </div>
       <div class="api-keys__actions">
         <button class="button button--link button--dark" @click="toggleToken">
-          <ion-icon
-            :name="tokenVisible ? 'eye-off' : 'eye'"
-            size="large"
-          ></ion-icon>
+          <ion-icon :name="tokenVisible ? 'eye-off' : 'eye'" size="large"></ion-icon>
         </button>
         <button class="button button--link button--dark" @click="refreshToken">
           <ion-icon name="refresh" size="large"></ion-icon>
@@ -47,7 +44,7 @@ export default {
 
   filters: {
     hash(str) {
-      return "*".repeat(str.length);
+      return "x".repeat(str.length);
     }
   },
   methods: {
@@ -99,8 +96,7 @@ export default {
 }
 
 .api-key {
-  font-size: 1.2vmin;
-  letter-spacing: 2px;
+  font-size: 12px;
   text-align: center;
   color: var(--blue);
   animation: fadeIn 1s ease-in-out;

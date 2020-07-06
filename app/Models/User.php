@@ -7,8 +7,8 @@ use Laravel\Cashier\Billable;
 use App\Events\UserQuotaReduced;
 use App\Contracts\Enums\UsageType;
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Support\Facades\Log;
 use App\Contracts\Enums\PricingPlan;
-use App\Exceptions\StripeChargeFailed;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Contracts\Auth\CanResetPassword;
@@ -126,12 +126,13 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
      * @param PricingPlan $plan
      * @return void
      */
-    public function generateInvoice(PricingPlan $plan)
+    public function invoiceAndCharge(PricingPlan $plan)
     {
         try {
             $selectedPlan = $plan->value;
             $description = "Payment for Tuforty Credits";
-            $this->invoiceFor($description, $selectedPlan['price']);
+            $options = ['metadata' => ['source' => 'tuforty']];
+            $this->invoiceFor($description, $selectedPlan['price'], [], $options);
         } catch (Exception $e) {
             // Do nothing, as invoice will keep retrying till sent.
         }
@@ -147,20 +148,17 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
      */
     public function chargeWithStripe(PricingPlan $plan, string $paymentRef, bool $saveCard = false)
     {
-        try {
-            // Update default payment method
-            $this->updateDefaultPaymentMethod($paymentRef);
-            // Charge Card
-            $payment = $this->charge($plan->value['price'], $paymentRef);
-            // Generate Invoice
-            $this->generateInvoice($plan);
-            // Handle Card Details
-            $this->updateDefaultPaymentMethodFromStripe();
-            if (!$saveCard) $this->defaultPaymentMethod()->delete();
+        // Update default payment method
+        // $this->updateDefaultPaymentMethod($paymentRef);
 
-            return $payment;
-        } catch (Exception $err) {
-            throw new StripeChargeFailed('Failed to charge card.');
-        }
+        // Charge Card
+        return $this->charge($plan->value['price'], $paymentRef);
+
+        // // Generate Invoice
+        // $this->invoiceAndCharge($plan);
+
+        // Handle Card Details
+        // $this->updateDefaultPaymentMethodFromStripe();
+        // if (!$saveCard) $this->defaultPaymentMethod()->delete();
     }
 }

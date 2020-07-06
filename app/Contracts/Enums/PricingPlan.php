@@ -22,7 +22,7 @@ class PricingPlan extends Enum
     ];
 
     const LARGE_TEAMS = [
-        'price' => 300000, // Cents
+        'price' => 30000, // Cents
         'quota' => 2000000,
         'label' => 'Large Teams'
     ];

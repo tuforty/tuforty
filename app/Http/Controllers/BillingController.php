@@ -6,9 +6,10 @@ use Exception;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use App\Contracts\Enums\PricingPlan;
-use App\Exceptions\StripeChargeFailed;
 use App\Http\Requests\Billing\MakePaymentRequest;
+use Laravel\Cashier\Exceptions\IncompletePayment;
 
 class BillingController extends Controller
 {
@@ -50,16 +51,14 @@ class BillingController extends Controller
      */
     public function purchaseQuota(MakePaymentRequest $request)
     {
-        return DB::transaction(function () use ($request) {
-            $pricingPlan = PricingPlan::coerce($request->get('product_id'));
+        $pricingPlan = PricingPlan::coerce($request->get('product_id'));
 
-            return $this->_handlePurchaseQuota(
-                $request->user(),
-                $pricingPlan,
-                $request->get('stripe_payment_intent'),
-                $request->get('save_card')
-            );
-        });
+        return $this->_handlePurchaseQuota(
+            $request->user(),
+            $pricingPlan,
+            $request->get('stripe_payment_intent'),
+            $request->get('save_card')
+        );
     }
 
     /**
@@ -77,8 +76,9 @@ class BillingController extends Controller
         string $stripeRef,
         bool $saveCard
     ) {
+        DB::beginTransaction();
+
         try {
-            DB::beginTransaction();
             $charge = $user->chargeWithStripe($pricingPlan, $stripeRef, $saveCard);
             $user->creditWithQuota($pricingPlan->value['quota']);
             $user->transactions()->create([
@@ -86,16 +86,17 @@ class BillingController extends Controller
                 'plan_amount' => $pricingPlan->value['price'],
                 'quota_purchased' => $pricingPlan->value['quota']
             ]);
-            DB::commit();
-        } catch (StripeChargeFailed $err) {
-            return response()->notModified($err->getMessage());
-        } catch (StripeChargeFailed $err) {
+        } catch (IncompletePayment $ex) {
+            Log::error($ex->getMessage(), [$user, $charge]);
+            return response()->badRequest($ex->getMessage());
+        } catch (Exception $ex) {
+            Log::error($ex->getMessage(), [$user, $charge]);
             $user->refund($charge->id);
-            return response()->internalServerError('Stripe charge failed.');
-        } catch (Exception $err) {
-            return response()->internalServerError($err->getMessage());
+            return response()->internalServerError($ex->getMessage());
         }
 
+
+        DB::commit();
         $payload = ['current_quota' => $user->quota_left];
         return response()->ok('Payment successfull.', $payload);
     }
