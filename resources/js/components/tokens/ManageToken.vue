@@ -68,14 +68,12 @@ export default {
       this.loading = false;
     },
 
-    onCopy: function(e) {
-      this.$toasted.show("Token copied to clipboard.");
+    onCopy(e) {
+      this.$toast.open("Token copied to clipboard.");
     },
 
-    onCopyError: function(e) {
-      this.$toasted.show("Failed to copy token to clipboard.", {
-        type: "error"
-      });
+    onCopyError(e) {
+      this.$toast.error("Failed to copy token to clipboard.");
     }
   }
 };

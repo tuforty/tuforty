@@ -109,9 +109,8 @@ export default {
         EventBus.$emit("purchase-made");
       } catch (err) {
         console.error(err);
-        this.$toasted.show(
-          "An error occured while making payment. We'll look into it shortly.",
-          { type: "error" }
+        this.$toast.error(
+          "An error occured while making payment. We'll look into it shortly."
         );
       }
     },
@@ -167,12 +166,10 @@ export default {
           stripe_payment_intent: paymentMethod,
           product_id: this.selectedPlan
         });
-        this.$toasted.show(data.message, { type: "success" });
+        this.$toast.success(data.message);
       } catch (err) {
         console.error(err);
-        this.$toasted.show("An error occured while charging the card.", {
-          type: "error"
-        });
+        this.$toast.error("An error occured while charging the card.");
       }
     },
 
@@ -196,7 +193,7 @@ export default {
         });
       } catch (err) {
         console.error(err);
-        this.$toasted.show("Failed to fetch pricing plans", { type: "error" });
+        this.$toast.error("Failed to fetch pricing plans");
       }
     }
   }

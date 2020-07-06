@@ -103,9 +103,7 @@ export default {
         this.formatusageHistory(data.data);
       } catch (err) {
         console.error(err);
-        this.$toasted.show("An error occured while fetching usages data.", {
-          type: "error"
-        });
+        this.$toast.error("An error occured while fetching usages data.");
       }
     },
 

@@ -165,6 +165,6 @@
     grid-auto-flow: row;
   }
   .grid #stripe-form {
-    max-width: auto;
+    max-width: 100% !important;
   }
 }

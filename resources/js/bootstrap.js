@@ -14,7 +14,7 @@ window.VueApexCharts = require("vue-apexcharts");
 
 window.VueClipboard = require("vue-clipboard2");
 
-window.Toasted = require("vue-toasted");
+window.VueToast = require("vue-toast-notification");
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

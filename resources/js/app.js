@@ -7,6 +7,7 @@
 require("./bootstrap");
 import "es6-promise/auto";
 import Vue from "vue";
+import "vue-toast-notification/dist/theme-default.css";
 
 window.Vue = require("vue");
 
@@ -69,7 +70,9 @@ Vue.component(
   require("./components/common/ErrorMessage.vue").default
 );
 
-Vue.use(window.Toasted);
+Vue.use(window.VueToast, {
+  position: "top-right"
+});
 
 Vue.use(window.VueClipboard);
 
