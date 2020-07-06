@@ -5,17 +5,29 @@
     <div class="grid">
       <section>
         <manage-api-tokens></manage-api-tokens>
-        <!-- <slide-input :value="threshold" label="Notification Threshold" name="threshold"></slide-input> -->
       </section>
-      <section>
+      <section v-if="currentPlan.last_transaction">
         <h2 class="title">Current Plan</h2>
         <div class="card card--plain plan-card">
-          <h4>{{ currentPlan.last_transaction.plan_name | stripUnderscore }}</h4>
-          <span>{{ currentPlan.last_transaction.quota_purchased || 0 | formatNumber }} transalation(s)</span>
+          <h4>
+            {{ currentPlan.last_transaction.plan_name | stripUnderscore }}
+          </h4>
           <span
-            class="price"
-          >$ {{ (currentPlan.last_transaction.plan_amount || 0 ) / 100 | formatNumber }}</span>
-          <span v-if="currentPlan.quota_left>0" class="status active">Active</span>
+            >{{
+              currentPlan.last_transaction.quota_purchased || 0 | formatNumber
+            }}
+            transalation(s)</span
+          >
+          <span class="price"
+            >$
+            {{
+              ((currentPlan.last_transaction.plan_amount || 0) / 100)
+                | formatNumber
+            }}</span
+          >
+          <span v-if="currentPlan.quota_left > 0" class="status active"
+            >Active</span
+          >
           <span v-else class="status active">Active</span>
         </div>
       </section>
@@ -25,10 +37,17 @@
 
 <script>
 import { stripUnderscore } from "../../utils/string";
+import { EventBus } from "../../utils/event.js";
 
 export default {
   created() {
     this.getCurrentPlan();
+  },
+
+  mounted() {
+    EventBus.$on("purchase-made", function() {
+      this.getCurrentPlan();
+    });
   },
 
   data: () => ({

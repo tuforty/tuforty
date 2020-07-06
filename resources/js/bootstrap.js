@@ -14,6 +14,8 @@ window.VueApexCharts = require("vue-apexcharts");
 
 window.VueClipboard = require("vue-clipboard2");
 
+window.VueToast = require("vue-toast-notification");
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

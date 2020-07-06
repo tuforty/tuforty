@@ -3,12 +3,16 @@
     <h2 class="title">Credential</h2>
     <div class="card card--plain">
       <div class="api-key__container">
-        <p class="api-key" v-if="tokenVisible">{{token}}</p>
-        <p class="api-key" v-else>***************************</p>
+        <p class="api-key" v-if="loading">Loading...</p>
+        <p class="api-key" v-else-if="tokenVisible">{{ token }}</p>
+        <p class="api-key" v-else>{{ token | hash }}</p>
       </div>
       <div class="api-keys__actions">
         <button class="button button--link button--dark" @click="toggleToken">
-          <ion-icon :name="tokenVisible ? 'eye-off': 'eye'" size="large"></ion-icon>
+          <ion-icon
+            :name="tokenVisible ? 'eye-off' : 'eye'"
+            size="large"
+          ></ion-icon>
         </button>
         <button class="button button--link button--dark" @click="refreshToken">
           <ion-icon name="refresh" size="large"></ion-icon>
@@ -41,6 +45,11 @@ export default {
     this.getToken();
   },
 
+  filters: {
+    hash(str) {
+      return "*".repeat(str.length);
+    }
+  },
   methods: {
     toggleToken() {
       this.tokenVisible = !this.tokenVisible;
@@ -65,23 +74,36 @@ export default {
       this.loading = false;
     },
 
-    onCopy: function(e) {
-      alert("Token copied to clipboard.");
+    onCopy(e) {
+      this.$toast.open("Token copied to clipboard.");
     },
 
-    onCopyError: function(e) {
-      alert("Failed to copy token to clipboard.");
+    onCopyError(e) {
+      this.$toast.error("Failed to copy token to clipboard.");
     }
   }
 };
 </script>
 
 <style scoped>
+#api-key {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#api-key .card {
+  flex: 1;
+}
+
 .api-key {
-  font-size: 18px;
+  font-size: 1.2vmin;
   letter-spacing: 2px;
   text-align: center;
   color: var(--blue);
+  animation: fadeIn 1s ease-in-out;
 }
 
 .api-key__container {
