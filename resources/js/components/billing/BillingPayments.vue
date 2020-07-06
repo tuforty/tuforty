@@ -30,18 +30,13 @@
         />
         <div ref="card"></div>
         <div ref="errors" role="alert"></div>
-        <img
-          class="stripe-logo"
-          :src="'/img/powered_by_stripe.svg'"
-          alt="powered by strip"
-        />
+        <img class="stripe-logo" :src="'/img/powered_by_stripe.svg'" alt="powered by strip" />
         <button
           ref="button"
           class="button button--dark fullWidth"
           @click="checkout"
-        >
-          Purchase Quota
-        </button>
+          :disabled="loading"
+        >{{ loading ? "Purchasing" : "Purchase Quota"}}</button>
       </section>
     </div>
   </section>
@@ -73,6 +68,7 @@ export default {
       selectedPaymentMethod: "old-card",
       cardHolder: { name: "" },
       hasOldCard: false,
+      loading: false,
       paymentOptions: this.getPaymentOptions(),
       selectedPlan: "",
       pricingPlans: []
@@ -101,6 +97,7 @@ export default {
      * Checkout the payment info selected.
      */
     async checkout() {
+      this.loading = true;
       try {
         const paymentMethod = this.saveCard
           ? await this.setupSavableCard()
@@ -113,6 +110,7 @@ export default {
           "An error occured while making payment. We'll look into it shortly."
         );
       }
+      this.loading = false;
     },
 
     /**

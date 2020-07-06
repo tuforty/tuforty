@@ -110,6 +110,10 @@
   width: 100vw;
 }
 
+.landing__footer a {
+  color: var(--white);
+}
+
 .landing__footer__content {
   display: flex;
   align-items: center;
@@ -300,7 +304,6 @@
   padding: 100px 20px;
   box-sizing: border-box;
   box-sizing: border-box;
-  background-color: #ececec;
 }
 
 #usecases section {
@@ -326,6 +329,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: #fff;
   border: 1px none #e6ecf1;
   border-radius: 8px;
   box-shadow: 0 2px 16px 0 rgba(24, 52, 117, 0.2);
@@ -333,9 +337,16 @@
   height: auto;
   width: 400px;
   margin: 20px;
-  font-size: 20px;
-  padding: 10px;
+  padding: 30px 50px;
   box-sizing: border-box;
+}
+
+.usecases-block h3 {
+  color: var(--blue);
+}
+
+.usecases-block p {
+  font-size: 16px;
 }
 
 .usecases-block img {

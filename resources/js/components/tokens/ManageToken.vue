@@ -3,8 +3,9 @@
     <h2 class="title">Credential</h2>
     <div class="card card--plain">
       <div class="api-key__container">
-        <p class="api-key" v-if="tokenVisible">{{ token }}</p>
-        <p class="api-key" v-else>***************************</p>
+        <p class="api-key" v-if="loading">Loading...</p>
+        <p class="api-key" v-else-if="tokenVisible">{{ token }}</p>
+        <p class="api-key" v-else>{{ token | hash }}</p>
       </div>
       <div class="api-keys__actions">
         <button class="button button--link button--dark" @click="toggleToken">
@@ -44,6 +45,11 @@ export default {
     this.getToken();
   },
 
+  filters: {
+    hash(str) {
+      return "*".repeat(str.length);
+    }
+  },
   methods: {
     toggleToken() {
       this.tokenVisible = !this.tokenVisible;
@@ -93,10 +99,11 @@ export default {
 }
 
 .api-key {
-  font-size: 12px;
+  font-size: 1.2vmin;
   letter-spacing: 2px;
   text-align: center;
   color: var(--blue);
+  animation: fadeIn 1s ease-in-out;
 }
 
 .api-key__container {
