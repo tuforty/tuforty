@@ -11,7 +11,7 @@
   <!-- Custom Meta Tags -->
   @yield('meta-tags')
 
-  <title>{{ config('app.name', 'Tuforty') }}</title>
+  <title>{{ config('app.name', 'Tuforty') }} | Currency Translation</title>
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}" defer></script>

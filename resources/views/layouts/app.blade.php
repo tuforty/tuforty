@@ -11,7 +11,7 @@
     <!-- Custom Meta Tags -->
     @yield('meta-tags')
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} | Currency Translation</title>
 
     <!-- Scripts -->
     <script src="https://js.stripe.com/v3/"></script>
