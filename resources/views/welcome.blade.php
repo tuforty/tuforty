@@ -6,8 +6,7 @@
       Concise money <br> translation to words
     </h1>
     <p>
-      Easily support translation for money values in over 50 indigienious
-      languages, and make users feel home.
+      Easily support translation for money values in 60+ languages, and make users feel home.
     </p>
     <button class="button button--dark button--round">
       <a class="border" href="{{ route('register') }}">
