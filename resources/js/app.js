@@ -7,11 +7,20 @@
 require("./bootstrap");
 import "es6-promise/auto";
 import Vue from "vue";
+import * as Sentry from '@sentry/browser';
 import "vue-toast-notification/dist/theme-default.css";
+import { Vue as VueIntegration } from '@sentry/integrations';
 
-window.Vue = require("vue");
-
+window.Vue = Vue;
 Vue.config.performance = true;
+
+/**
+ * Setup Sentry
+ */
+Sentry.init({
+  dsn: process.env.MIX_FRONTEND_DSN,
+  integrations: [new VueIntegration({ Vue, attachProps: true })],
+});
 
 /**
  * The following block of code may be used to automatically register your
