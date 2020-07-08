@@ -66,13 +66,21 @@ export default {
 
     async refreshToken() {
       this.loading = true;
-      const { data } = await axios.get("/api/v1/token/refresh");
-      this.token = data.token;
-      this.loading = false;
+
+      try {
+        const { data } = await axios.get("/api/v1/token/refresh");
+        this.token = data.token;
+        this.$toast.success("Token refreshed successfully.");
+      } catch (err) {
+        console.error(err);
+        this.$toast.error("error occured while refreshing token.");
+      } finally {
+        this.loading = false;
+      }
     },
 
     onCopy(e) {
-      this.$toast.open("Token copied to clipboard.");
+      this.$toast.success("Token copied to clipboard.");
     },
 
     onCopyError(e) {

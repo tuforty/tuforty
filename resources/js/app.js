@@ -71,7 +71,8 @@ Vue.component(
 );
 
 Vue.use(window.VueToast, {
-  position: "top-right"
+  position: "top-right",
+  duration: 8000
 });
 
 Vue.use(window.VueClipboard);

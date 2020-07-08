@@ -35,7 +35,7 @@
           ref="button"
           class="button button--dark fullWidth"
           @click="checkout"
-          :disabled="loading"
+          :disabled="!formCompleted || loading"
         >{{ loading ? "Purchasing" : "Purchase Quota"}}</button>
       </section>
     </div>
@@ -75,7 +75,22 @@ export default {
     };
   },
 
+  computed: {
+    formCompleted: function() {
+      return this.cardHolder.name.trim().length > 0;
+    }
+  },
+
   methods: {
+    /**
+     * Validate that the payment form is completed.
+     */
+    validatePaymentForm() {
+      if (this.cardHolder.name.trim().length <= 0) {
+        throw Error("Card holder's name cannot be empty.");
+      }
+    },
+
     /**
      * Check if the current user has an existing card saved.
      */
@@ -98,19 +113,17 @@ export default {
      */
     async checkout() {
       this.loading = true;
+
       try {
-        const paymentMethod = this.saveCard
-          ? await this.setupSavableCard()
-          : await this.setupUnsavableCard();
+        this.validatePaymentForm();
+        const paymentMethod = await this.setupUnsavableCard();
         await this.makePurchase(paymentMethod);
-        EventBus.$emit("purchase-made");
       } catch (err) {
         console.error(err);
-        this.$toast.error(
-          "An error occured while making payment. We'll look into it shortly."
-        );
+        this.$toast.error(err.message || "Error occured while making payment.");
+      } finally {
+        this.loading = false;
       }
-      this.loading = false;
     },
 
     /**
@@ -126,9 +139,8 @@ export default {
           }
         }
       );
-      if (error) {
-        throw Error(error);
-      }
+
+      if (error) throw Error(error.message);
       return setupIntent.payment_method;
     },
 
@@ -141,9 +153,8 @@ export default {
         card,
         { billing_details: { name: this.cardHolder.name } }
       );
-      if (error) {
-        throw Error(error);
-      }
+
+      if (error) throw Error(error.message);
       return paymentMethod.id;
     },
 
@@ -158,17 +169,15 @@ export default {
      * Make purchase request with the backend.
      */
     async makePurchase(paymentMethod) {
-      try {
-        const { data } = await axios.post("/api/v1/billing/purchase", {
-          save_card: this.saveCard,
-          stripe_payment_intent: paymentMethod,
-          product_id: this.selectedPlan
-        });
-        this.$toast.success(data.message);
-      } catch (err) {
-        console.error(err);
-        this.$toast.error("An error occured while charging the card.");
-      }
+      const { data } = await axios.post("/api/v1/billing/purchase", {
+        save_card: this.saveCard,
+        stripe_payment_intent: paymentMethod,
+        product_id: this.selectedPlan
+      });
+
+      this.$toast.success("Purchase successfull.");
+      EventBus.$emit("purchase::success");
+      return data;
     },
 
     /**
@@ -191,7 +200,9 @@ export default {
         });
       } catch (err) {
         console.error(err);
-        this.$toast.error("Failed to fetch pricing plans");
+        this.$toast.error(
+          err.response.message || "Error occured while fetching pricing plans."
+        );
       }
     }
   }

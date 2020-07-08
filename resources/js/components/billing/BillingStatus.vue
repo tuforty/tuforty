@@ -9,25 +9,21 @@
       <section v-if="currentPlan.last_transaction">
         <h2 class="title">Current Plan</h2>
         <div class="card card--plain plan-card">
-          <h4>
-            {{ currentPlan.last_transaction.plan_name | stripUnderscore }}
-          </h4>
-          <span
-            >{{
-              currentPlan.last_transaction.quota_purchased || 0 | formatNumber
-            }}
-            transalation(s)</span
-          >
-          <span class="price"
-            >$
+          <h4>{{ currentPlan.last_transaction.plan_name | stripUnderscore }}</h4>
+          <span>
             {{
-              ((currentPlan.last_transaction.plan_amount || 0) / 100)
-                | formatNumber
-            }}</span
-          >
-          <span v-if="currentPlan.quota_left > 0" class="status active"
-            >Active</span
-          >
+            currentPlan.last_transaction.quota_purchased || 0 | formatNumber
+            }}
+            transalation(s)
+          </span>
+          <span class="price">
+            $
+            {{
+            ((currentPlan.last_transaction.plan_amount || 0) / 100)
+            | formatNumber
+            }}
+          </span>
+          <span v-if="currentPlan.quota_left > 0" class="status active">Active</span>
           <span v-else class="status active">Active</span>
         </div>
       </section>
@@ -45,7 +41,7 @@ export default {
   },
 
   mounted() {
-    EventBus.$on("purchase-made", function() {
+    EventBus.$on("purchase::success", function() {
       this.getCurrentPlan();
     });
   },
@@ -75,8 +71,11 @@ export default {
       try {
         const { data } = await axios.get("/api/v1/billing/current-plan");
         this.currentPlan = data.data;
-      } catch (error) {
-        this.error = error.message;
+      } catch (err) {
+        console.error(err);
+        this.$toast.error(
+          err.response.message || "Error occurred while fetching new plan."
+        );
       } finally {
         this.loading = false;
       }
