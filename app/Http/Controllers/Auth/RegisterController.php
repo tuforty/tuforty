@@ -65,6 +65,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $freePlanQuota = 30;
         DB::beginTransaction();
 
         $user = User::create([
@@ -72,14 +73,14 @@ class RegisterController extends Controller
             'email' => strtolower($data['email']),
             'password' => Hash::make($data['password']),
             'api_token' => Str::random(60),
-            'quota_left' => 5,
-            'quota_last_purchased' => 5,
+            'quota_left' => $freePlanQuota,
+            'quota_last_purchased' => $freePlanQuota,
         ]);
 
         $user->transactions()->create([
             'plan_name' => 'FREE_PLAN',
             'plan_amount' => 0,
-            'quota_purchased' => 5
+            'quota_purchased' => $freePlanQuota
         ]);
 
         $user->createAsStripeCustomer();
