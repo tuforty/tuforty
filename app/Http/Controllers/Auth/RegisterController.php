@@ -72,7 +72,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => strtolower($data['email']),
             'password' => Hash::make($data['password']),
-            'api_token' => Str::random(60),
+            'api_token' => config('auth.prefix.api') . Str::random(60),
             'quota_left' => $freePlanQuota,
             'quota_last_purchased' => $freePlanQuota,
         ]);

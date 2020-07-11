@@ -40,7 +40,7 @@ class ApiTokenController extends Controller
      */
     public function refresh(Request $request)
     {
-        $token = Str::random(60);
+        $token = config('auth.prefix.api') . Str::random(60);
         $payload = ['api_token' => $token];
         $request->user()->forceFill($payload)->save();
         return compact('token');
