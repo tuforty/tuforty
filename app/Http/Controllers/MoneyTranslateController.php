@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Contracts\Data\Currency;
 use App\Contracts\Enums\UsageType;
 use App\Services\MoneyToWords\Converter;
 use App\Http\Requests\MoneyTranslate\GetTranslationRequest;
@@ -27,10 +28,14 @@ class MoneyTranslateController extends Controller
      */
     public function get(GetTranslationRequest $request)
     {
+        // Validate currency.
+        $useShort = $request->get('use_short', true);
+        $currency = Currency::getCurrency($request->currency, $useShort);
+        if (!$currency) return response()->badRequest('Unsupported currency.');
+
         // Perform conversion
         $language = $request->language;
-        $whole_unit = $request->whole_unit;
-        $decimal_unit = $request->decimal_unit;
+        [$whole_unit, $decimal_unit]  = $currency;
         $converter = Converter::getInstance($whole_unit, $decimal_unit, $language);
         $translation = $converter->convert($request->value);
 
@@ -41,6 +46,7 @@ class MoneyTranslateController extends Controller
             array_merge(
                 compact('whole_unit', 'decimal_unit', 'language'),
                 [
+                    'currency' => $request->currency,
                     'translation' => $translation->full,
                     'whole_translation' => $translation->whole,
                     'decimal_translation' => $translation->decimal

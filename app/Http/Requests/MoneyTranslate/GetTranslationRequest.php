@@ -3,6 +3,8 @@
 namespace App\Http\Requests\MoneyTranslate;
 
 use ReflectionClass;
+use Illuminate\Validation\Rule;
+use App\Contracts\Data\Currency;
 use Illuminate\Foundation\Http\FormRequest;
 use Tuforti\MoneyToWords\Languages as Language;
 
@@ -25,14 +27,15 @@ class GetTranslationRequest extends FormRequest
      */
     public function rules()
     {
+        $currencies =  array_keys(Currency::directory);
         $languageReflection = new ReflectionClass(Language::class);
-        $languages = implode(',', array_values($languageReflection->getConstants()));
+        $languages = array_values($languageReflection->getConstants());
 
         return [
             'value' => 'required',
-            'language' => "required|in:{$languages}",
-            "whole_unit" => "required|string",
-            "decimal_unit" => "required|string",
+            'language' => ["required", Rule::in($languages)],
+            "currency" => ["required", Rule::in($currencies)],
+            "use_short" => [Rule::in("true", "false", 1, 0)],
         ];
     }
 }
