@@ -7080,11 +7080,11 @@
         },
         {
             "name": "tuforti/money-to-words-translator",
-            "version": "3.1.0",
+            "version": "3.1.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:TNkemdilim/tuforti-money-to-words-translator.git",
-                "reference": "bb9855d53a8cb059dd761355548de8d20c8b5a21"
+                "reference": "c094f34a58702dc7b0a3a0c10b421512625b62d4"
             },
             "require": {
                 "google/cloud-translate": "^1.7",
@@ -7112,7 +7112,7 @@
                 }
             ],
             "description": "A php library that converts any money value in digit in any language or numeric system to its words in any language",
-            "time": "2020-07-11T08:06:57+00:00"
+            "time": "2020-07-12T22:23:55+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
