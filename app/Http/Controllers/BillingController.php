@@ -32,7 +32,7 @@ class BillingController extends Controller
     public function currentPlan(Request $request)
     {
         $user = $request->user();
-        $transaction = $user->transactions()->first();
+        $transaction = $user->transactions()->orderBy('updated_at', 'DESC')->first();
 
         $payload = [
             'quota_left' => $user->quota_left,
