@@ -13,9 +13,9 @@
     <div>
 
         <p>
-            Before proceeding, please check your email for a verification link.
+            A verification link has been sent to <strong>{{ strtolower(Auth::user()->email) }}</strong>.
             <br><br>
-            If you did not receive the email, click the button below.
+            Please check your email for the link. If you still didn't receive the email, click the button below.
         </p>
     </div>
 
