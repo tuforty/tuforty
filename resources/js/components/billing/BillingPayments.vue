@@ -83,9 +83,16 @@ export default {
 
   methods: {
     /**
-     * Validate that the payment form is completed.
+     * Clear the payment card form.
      */
-    validatePaymentForm() {
+    clearPaymentForm() {
+      this.cardHolder.name = "";
+      card.clear();
+    },
+
+    /**
+     * Validate that the payment form is completed.
+     */ validatePaymentForm() {
       if (this.cardHolder.name.trim().length <= 0) {
         throw Error("Card holder's name cannot be empty.");
       }
@@ -118,6 +125,7 @@ export default {
         this.validatePaymentForm();
         const paymentMethod = await this.setupUnsavableCard();
         await this.makePurchase(paymentMethod);
+        this.clearPaymentForm();
       } catch (err) {
         console.error(err);
         this.$toast.error(err.message || "Error occured while making payment.");
