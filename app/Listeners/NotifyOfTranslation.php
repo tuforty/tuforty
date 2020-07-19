@@ -23,6 +23,12 @@ class NotifyOfTranslation implements ShouldQueue
         $this->notifySlack($event);
     }
 
+    /**
+     * Send a notification to Slack.
+     *
+     * @param TranslationPerfomed $event
+     * @return void
+     */
     private function notifySlack(TranslationPerfomed $event)
     {
         $jsonPayload = json_encode($event->payload);

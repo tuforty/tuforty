@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use App\Contracts\Enums\PricingPlan;
+use App\Events\PaymentSuccessful;
 use App\Http\Requests\Billing\MakePaymentRequest;
 use Laravel\Cashier\Exceptions\IncompletePayment;
 
@@ -77,15 +78,17 @@ class BillingController extends Controller
         bool $saveCard
     ) {
         DB::beginTransaction();
+        $transaction = [
+            'plan_name' => $pricingPlan->key,
+            'plan_amount' => $pricingPlan->value['price'],
+            'quota_purchased' => $pricingPlan->value['quota']
+        ];
 
         try {
             $charge = $user->chargeWithStripe($pricingPlan, $stripeRef, $saveCard);
             $user->creditWithQuota($pricingPlan->value['quota']);
-            $user->transactions()->create([
-                'plan_name' => $pricingPlan->key,
-                'plan_amount' => $pricingPlan->value['price'],
-                'quota_purchased' => $pricingPlan->value['quota']
-            ]);
+            $user->transactions()->create($transaction);
+            event(new PaymentSuccessful($user, (int) $pricingPlan->value['price'], $transaction));
         } catch (IncompletePayment $ex) {
             Log::error($ex->getMessage(), [$user, $charge]);
             return response()->badRequest($ex->getMessage());

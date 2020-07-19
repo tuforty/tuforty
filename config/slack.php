@@ -22,6 +22,7 @@ return [
         'default' => 'general',
         'horizon' => 'alerts',
         'cron' => 'cron-jobs',
-        'usage' => 'usage'
+        'usage' => 'usage',
+        'payments' => 'payments'
     ]
 ];
