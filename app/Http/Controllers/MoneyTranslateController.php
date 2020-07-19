@@ -29,6 +29,8 @@ class MoneyTranslateController extends Controller
      */
     public function get(GetTranslationRequest $request)
     {
+        $user = $request->user();
+
         // Validate currency.
         $useShort = $request->get('use_short', true);
         $currency = Currency::getCurrency($request->currency, $useShort);
@@ -42,8 +44,8 @@ class MoneyTranslateController extends Controller
 
         // Decrease quota
         $usageType = UsageType::TranslateMoneyToWords();
-        $request->user()->decrementQuota($usageType);
-        event(new TranslationPerfomed($request->user(), $usageType, $request->toArray()));
+        $user->decrementQuota($usageType);
+        event(new TranslationPerfomed($user, $usageType, $request->toArray()));
 
         return response()->json(
             array_merge(
