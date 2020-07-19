@@ -98,13 +98,9 @@
 .app__sidebar__links {
   display: flex;
   flex-direction: column;
-  height: 50%;
+  height: 60%;
   list-style: none;
-  margin-left: 20px;
-}
-
-.app__sidebar__links.bottom {
-  height: 10%;
+  margin-left: 40px;
 }
 
 .app__sidebar__links a {

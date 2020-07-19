@@ -14,7 +14,7 @@
       @else
         <li class="landing__nav__link"><a href="{{ route('login') }}">Login</a></li>
         @if (Route::has('register'))
-          <li class="landing__nav__link"><a class="border" href="{{ route('register') }}">Get started</a></li>
+          <li class="landing__nav__link" id="get-started"><a class="border" href="{{ route('register') }}">Get started</a></li>
         @endif
       @endauth
     </ul>

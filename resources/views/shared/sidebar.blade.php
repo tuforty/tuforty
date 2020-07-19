@@ -21,21 +21,19 @@
       </a>
     </li>
     <li>
+      <a href="https://docs.tuforty.com" target="_blank">
+        <ion-icon name="paper" size="large"></ion-icon>
+        <span>Read Docs</span>
+      </a>
+    </li>
+    <li>
       <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
         <ion-icon name="remove-circle-outline" size="large"></ion-icon>
-        <span>Sign out</span>
+        <span>Sign Out</span>
       </a>
       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         {{ csrf_field() }}
       </form>
-    </li>
-  </ul>
-  <ul class="app__sidebar__links bottom">
-    <li>
-      <a href="https://docs.tuforty.com/" target="_blank">
-        <ion-icon name="paper" size="large"></ion-icon>
-        <span>Documentation</span>
-      </a>
     </li>
   </ul>
 </aside>
