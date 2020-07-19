@@ -30,6 +30,8 @@ class Kernel extends ConsoleKernel
             ->withoutOverlapping()
             ->runInBackground()
             ->onOneServer();
+
+        $schedule->command('horizon:snapshot')->everyFiveMinutes();
     }
 
     /**

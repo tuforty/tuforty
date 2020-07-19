@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Laravel\Horizon\Horizon;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Config;
 use Laravel\Horizon\HorizonApplicationServiceProvider;
 
 class HorizonServiceProvider extends HorizonApplicationServiceProvider
@@ -18,10 +19,12 @@ class HorizonServiceProvider extends HorizonApplicationServiceProvider
         parent::boot();
 
         // Horizon::routeSmsNotificationsTo('15556667777');
-        Horizon::routeMailNotificationsTo('nkemdilimtochukwu@gmail.com');
-        Horizon::routeSlackNotificationsTo(env('SLACK_WEBHOOK_URL'), '#general');
+        $slackWebhookUrl = env('SLACK_WEBHOOK_URL', '');
+        $slackChannel = Config::get('slack.channels.horizon');
 
-        Horizon::night();
+        Horizon::routeSlackNotificationsTo($slackWebhookUrl, "#{$slackChannel}")
+            ->routeMailNotificationsTo('nkemdilimtochukwu@gmail.com')
+            ->night();
     }
 
     /**
