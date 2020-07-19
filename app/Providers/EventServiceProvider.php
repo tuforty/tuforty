@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
-use App\Events\UserQuotaReduced;
+use App\Events\TranslationPerfomed;
 use App\Listeners\LogUserQuotaUsage;
-use Illuminate\Support\Facades\Event;
+use App\Listeners\NotifyOfTranslation;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -20,8 +20,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        UserQuotaReduced::class => [
-            LogUserQuotaUsage::class
+        TranslationPerfomed::class => [
+            LogUserQuotaUsage::class,
+            NotifyOfTranslation::class,
         ]
     ];
 

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Config;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
@@ -11,6 +12,11 @@ class Admin extends Model
 
     public function routeNotificationForSlack()
     {
-        return env('SLACK_WEBHOOK_URL');
+        $channel = Config::get('slack.channels.default');
+
+        return [
+            'token' => Config::get('slack.token'),
+            'channel' => "#{$channel}"
+        ];
     }
 }

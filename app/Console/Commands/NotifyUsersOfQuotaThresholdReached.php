@@ -4,14 +4,12 @@ namespace App\Console\Commands;
 
 use Carbon\Carbon;
 use App\Models\User;
-use App\Models\Admin;
-use App\Contracts\SlackTask;
+use App\Contracts\Slack;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Config;
 use App\Mail\QuotaThresholdExceededMail;
-use Illuminate\Support\Facades\Notification;
-use App\Notifications\SlackTaskNotification;
 
 class NotifyUsersOfQuotaThresholdReached extends Command
 {
@@ -54,10 +52,9 @@ class NotifyUsersOfQuotaThresholdReached extends Command
      */
     private function sendSlackNotification($totalProcessed)
     {
-        $title = "*Task:* {$this->signature}\n*Description:* {$this->description}";
+        $title = ":tada: *Task:* {$this->signature}\n*Description:* {$this->description}";
         $message = "*Message:* Successfully notifed threshold users.\n*Total users notified:* {$totalProcessed}.";
-        $task = new SlackTask($title, $message);
-        Notification::send(Admin::first(), new SlackTaskNotification($task));
+        Slack::sendMessage($title, $message, Config::get('slack.channels.cron'));
     }
 
     /**

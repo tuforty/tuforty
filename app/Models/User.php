@@ -4,10 +4,8 @@ namespace App\Models;
 
 use Exception;
 use Laravel\Cashier\Billable;
-use App\Events\UserQuotaReduced;
 use App\Contracts\Enums\UsageType;
 use Laravel\Passport\HasApiTokens;
-use Illuminate\Support\Facades\Log;
 use App\Contracts\Enums\PricingPlan;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -87,9 +85,7 @@ class User extends Authenticatable implements MustVerifyEmail, CanResetPassword
         $this->quota_left -= UsageType::getQuotaAmount($usageType);
         if (!$this->hasQuotaLeft()) $this->quota_left = 0;
 
-        return tap($this->save(), function ($result) use ($usageType) {
-            if ($result) event(new UserQuotaReduced($this, $usageType));
-        });
+        return $this->save();
     }
 
     /**

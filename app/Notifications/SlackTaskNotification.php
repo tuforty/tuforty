@@ -2,26 +2,46 @@
 
 namespace App\Notifications;
 
-use App\Contracts\SlackTask;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\SlackMessage;
+use BeyondCode\SlackNotificationChannel\Messages\SlackMessage;
 
 class SlackTaskNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    private $task;
+    /**
+     * Message title to be sent.
+     *
+     * @var string
+     */
+    protected $title;
+
+    /**
+     * Message body to be sent.
+     *
+     * @var string
+     */
+    protected $message;
+
+    /**
+     * Slack channel to send the message to.
+     *
+     * @var string
+     */
+    protected $channel;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct(SlackTask $task)
+    public function __construct(string $title, string $message, $channel = 'general')
     {
-        $this->task = $task;
+        $this->title = $title;
+        $this->message = $message;
+        $this->channel = $channel;
     }
 
     /**
@@ -36,6 +56,16 @@ class SlackTaskNotification extends Notification implements ShouldQueue
     }
 
     /**
+     * Get the plain content of the job.
+     *
+     * @return string
+     */
+    public function plainContent(): string
+    {
+        return "{$this->title}\n\n{$this->message}";
+    }
+
+    /**
      * Get the Slack representation of the notification.
      *
      * @param  mixed  $notifiable
@@ -44,10 +74,9 @@ class SlackTaskNotification extends Notification implements ShouldQueue
     public function toSlack($notifiable)
     {
         return (new SlackMessage)
-            ->from('Tuforty Job Man', ':ghost:') // TODO: Fix this
-            ->to('#general')
+            ->to("#{$this->channel}")
             ->success()
-            ->content($this->task->plainContent());
+            ->content($this->plainContent());
     }
 
     /**
@@ -58,6 +87,9 @@ class SlackTaskNotification extends Notification implements ShouldQueue
      */
     public function toArray($notifiable)
     {
-        return $this->task->toArray();
+        return [
+            'title' => $this->title,
+            'message' => $this->message
+        ];
     }
 }

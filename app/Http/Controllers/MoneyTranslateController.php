@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Contracts\Data\Currency;
 use App\Contracts\Enums\UsageType;
+use App\Events\TranslationPerfomed;
 use App\Services\MoneyToWords\Converter;
 use App\Http\Requests\MoneyTranslate\GetTranslationRequest;
 
@@ -40,7 +41,9 @@ class MoneyTranslateController extends Controller
         $translation = $converter->convert($request->value);
 
         // Decrease quota
-        $request->user()->decrementQuota(UsageType::TranslateMoneyToWords());
+        $usageType = UsageType::TranslateMoneyToWords();
+        $request->user()->decrementQuota($usageType);
+        event(new TranslationPerfomed($request->user(), $usageType, $request->toArray()));
 
         return response()->json(
             array_merge(
