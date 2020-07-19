@@ -98,15 +98,19 @@
 .app__sidebar__links {
   display: flex;
   flex-direction: column;
-  height: 60%;
+  height: 50%;
   list-style: none;
-  margin-left: 40px;
+  margin-left: 20px;
+}
+
+.app__sidebar__links.bottom {
+  height: 10%;
 }
 
 .app__sidebar__links a {
   margin: 20px 0;
   color: var(--grey);
-  font-size: 18px;
+  font-size: 15px;
   display: flex;
   font-weight: 500;
   align-items: center;

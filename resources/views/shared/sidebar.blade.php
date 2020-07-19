@@ -30,4 +30,12 @@
       </form>
     </li>
   </ul>
+  <ul class="app__sidebar__links bottom">
+    <li>
+      <a href="https://docs.tuforty.com/" target="_blank">
+        <ion-icon name="paper" size="large"></ion-icon>
+        <span>Documentation</span>
+      </a>
+    </li>
+  </ul>
 </aside>
