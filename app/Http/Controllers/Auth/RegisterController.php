@@ -77,6 +77,7 @@ class RegisterController extends Controller
             'quota_last_purchased' => $freePlanQuota,
         ]);
 
+
         $user->transactions()->create([
             'plan_name' => 'FREE_PLAN',
             'plan_amount' => 0,
