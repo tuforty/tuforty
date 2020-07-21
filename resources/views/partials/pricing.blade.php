@@ -45,6 +45,6 @@
   </section>
 
   <section>
-    <p><em>Still in need of more quota? <a href="mailto:hello@tuforty.com">Please let us know.</a></em></p>
+    <p><em>Still in need of more quota? We'll love to help. <a href="mailto:hello@tuforty.com">Please let us know.</a></em></p>
   </section>
 </div>

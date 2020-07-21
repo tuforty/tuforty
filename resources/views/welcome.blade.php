@@ -36,6 +36,12 @@ curl -L -X GET
   "translation": "trois cent vingt-neuf livres, quatre-vingt-dix-neuf penny seulement"
 }</code>
     </pre>
+    <div class="text-right text-underline">
+      <br>
+      <a href="https://docs.tuforty.com/money-translation/money-translate-to-sentence" target="_">
+        See more examples &rarr;
+      </a>
+    </div>
   </div>
 </main>
 @endsection

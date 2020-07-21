@@ -6,6 +6,14 @@
   text-align: center;
 }
 
+.text-right {
+  text-align: right;
+}
+
+.text-underline {
+  text-decoration: underline;
+}
+
 .text-success {
   color: #64d359;
 }
