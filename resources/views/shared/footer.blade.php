@@ -5,6 +5,7 @@
       <li><a href="https://legals.tuforty.com">Terms of use</a></li>
       <li><a href="https://legals.tuforty.com/privacy">Privacy Policy</a></li>
       <li><a href="https://docs.tuforty.com">Documentation</a></li>
+      <li><a href="mailto:hello@tuforty.com">hello@tuforty.com</a></li>
     </ul>
     <p class="copy">&copy; Tuforty</span> {{ date("Y") }}</p>
   </div>
