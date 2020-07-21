@@ -10,9 +10,9 @@
       <div class="header">
         <h2>Starter</h2>
       </div>
-      <span class="price">$20<sub></sub></span>
+      <span class="price">$0<sub></sub></span>
       <p>
-        25,000 translations<br>
+        50 translations<br>
         60+ languages<br>
         No expiry<br>
       </p>
@@ -22,9 +22,9 @@
       <div class="header">
         <h2>Startup</h2>
       </div>
-      <span class="price">$60<sub></sub></span>
+      <span class="price">$20<sub></sub></span>
       <p>
-        200,000 translations<br>
+        25,000 translations<br>
         60+ languages<br>
         No expiry<br>
       </p>
@@ -32,15 +32,19 @@
     </div>
     <div class="pricing-card special">
       <div class="header">
-        <h2>Large teams</h2>
+        <h2>Scaling</h2>
       </div>
-      <span class="price">$300<sub></sub></span>
+      <span class="price">$60<sub></sub></span>
       <p>
-        2 Million translations<br>
+        200,000 translations<br>
         60+ languages<br>
         No expiry<br>
       </p>
       <a class="button button--dark" href="{{ route('register') }}">Sign up</a>
     </div>
+  </section>
+
+  <section>
+    <p><em>Still in need of more quota? <a href="mailto:hello@tuforty.com">Please let us know.</a></em></p>
   </section>
 </div>

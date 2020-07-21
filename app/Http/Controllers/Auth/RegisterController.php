@@ -65,7 +65,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $freePlanQuota = 30;
+        $freePlanQuota = 50;
         DB::beginTransaction();
 
         $user = User::create([
