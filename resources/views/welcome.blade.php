@@ -8,11 +8,9 @@
     <p>
       Easily support translation for money values in 60+ languages, and make users feel home.
     </p>
-    <button class="button button--dark button--round">
-      <a class="border" href="{{ route('register') }}">
+    <a class="button button--dark button--round" href="{{ route('register') }}">
         Get started
-      </a>
-    </button>
+    </a>
   </div>
   <div class="text-editor__container">
     <div class="text-editor__icon close"></div>
@@ -20,7 +18,7 @@
     <div class="text-editor__icon resize"></div>
     <pre class="text-editor">
       <code class="language-bash">
-curl -L -X GET 
+curl -L -X GET
 "https://tuforty.com/api/v1/translator/money?value=329.99&amplanguage=fr&ampcurrency=GBP" \
 -H 'Authorization: Bearer { TUFORTY_API_KEY }' \
 -H 'Content-Type: application/json' \

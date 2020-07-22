@@ -8,7 +8,8 @@
   justify-content: center;
   padding: 20px;
   box-sizing: border-box;
-  background: url("../img/pattern-bg.png");
+  background: url("../img/pattern-bg.svg") no-repeat;
+  background-size: cover;
 }
 
 .login > * {
