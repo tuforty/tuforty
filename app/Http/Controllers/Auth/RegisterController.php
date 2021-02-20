@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
+use App\Contracts\Slack;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -87,6 +88,12 @@ class RegisterController extends Controller
         $user->createAsStripeCustomer();
 
         DB::commit();
+
+        $decoded = json_encode($user->toArray());
+        Slack::sendMessage(
+            ":tada: New User",
+            "A new user just signed up.\n\nDetails: ```{$decoded}```"
+        );
 
         return $user;
     }
