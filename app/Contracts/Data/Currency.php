@@ -1518,4 +1518,14 @@ class Currency
             ? static::getCurrencyShort($currency)
             : static::getCurrencyLong($currency);
     }
+
+    /**
+     * Get all supported currencies.
+     *
+     * @return array
+     */
+    static function all(): array
+    {
+        return array_keys(Currency::directory);
+    }
 }

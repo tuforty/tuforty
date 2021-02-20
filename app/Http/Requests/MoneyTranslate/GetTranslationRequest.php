@@ -27,7 +27,7 @@ class GetTranslationRequest extends FormRequest
      */
     public function rules()
     {
-        $currencies =  array_keys(Currency::directory);
+        $currencies =  Currency::all();
         $languageReflection = new ReflectionClass(Language::class);
         $languages = array_values($languageReflection->getConstants());
 

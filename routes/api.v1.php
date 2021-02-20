@@ -40,6 +40,12 @@ Route::get('billing/current-plan', 'BillingController@currentPlan');
 Route::get('usage/analytics', 'UsageController@index');
 
 /**
+ * Get supported values.
+ */
+Route::get('supported/languages', 'SupportedValueController@getSupportedLanguages');
+Route::get('supported/currencies', 'SupportedValueController@getSupportedCurrencies');
+
+/**
  * Translation API 
  */
 Route::get('translator/money', 'MoneyTranslateController@get');
