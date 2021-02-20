@@ -8,6 +8,16 @@ use Tuforti\MoneyToWords\Languages;
 class SupportedValueController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api');
+    }
+
+    /**
      * Get supported translation currencies.
      *
      * @param  \Illuminate\Http\Request  $request
