@@ -7,17 +7,6 @@ use Tuforti\MoneyToWords\Languages;
 
 class SupportedValueController extends Controller
 {
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
-    }
-
     /**
      * Get supported translation currencies.
      *
